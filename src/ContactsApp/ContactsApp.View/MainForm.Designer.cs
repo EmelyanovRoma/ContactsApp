@@ -174,7 +174,7 @@
             ContactsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ContactsListBox.FormattingEnabled = true;
             ContactsListBox.ItemHeight = 15;
-            ContactsListBox.Items.AddRange(new object[] { "Абакумов Владимир", "Абалышев Михаил", "Балтабаев Егор", "Веденин Семен", "Виргунов Михаил", "Глазков Павел", "Голов Станислав" });
+            ContactsListBox.Items.AddRange(new object[] { "Абакумов Дмитрий", "Абалышев Михаил", "Балтабаев Егор", "Веденин Семен", "Виргунов Михаил", "Глазков Павел", "Голов Станислав" });
             ContactsListBox.Location = new Point(3, 32);
             ContactsListBox.Name = "ContactsListBox";
             ContactsListBox.Size = new Size(238, 379);
@@ -370,6 +370,7 @@
             Controls.Add(MainTableLayoutPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ContactsApp";
             MainTableLayoutPanel.ResumeLayout(false);
             ListContactsPanel.ResumeLayout(false);
