@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             ControlPanel = new Panel();
             OKButton = new Button();
-            label1 = new Label();
-            label2 = new Label();
-            label6 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label7 = new Label();
+            NameProgramLabel = new Label();
+            VersionProgramLabel = new Label();
+            AuthorSurnameLabel = new Label();
+            AuthorLabel = new Label();
+            EmailLabel = new Label();
+            GithubLabel = new Label();
+            EmailAddressLabel = new Label();
             MITLicenseTextBox = new TextBox();
             GithubLinkLabel = new LinkLabel();
-            label8 = new Label();
-            linkLabel1 = new LinkLabel();
+            ImagesDownloadLabel = new Label();
+            WebsiteOfImagesLinkLabel = new LinkLabel();
             ControlPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -65,78 +65,78 @@
             OKButton.Text = "OK";
             OKButton.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // NameProgramLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(147, 30);
-            label1.TabIndex = 1;
-            label1.Text = "ContactsApp";
+            NameProgramLabel.AutoSize = true;
+            NameProgramLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            NameProgramLabel.Location = new Point(12, 28);
+            NameProgramLabel.Name = "NameProgramLabel";
+            NameProgramLabel.Size = new Size(147, 30);
+            NameProgramLabel.TabIndex = 1;
+            NameProgramLabel.Text = "ContactsApp";
             // 
-            // label2
+            // VersionProgramLabel
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(16, 59);
-            label2.Name = "label2";
-            label2.Size = new Size(31, 15);
-            label2.TabIndex = 2;
-            label2.Text = "v 1.0";
+            VersionProgramLabel.AutoSize = true;
+            VersionProgramLabel.Location = new Point(16, 59);
+            VersionProgramLabel.Name = "VersionProgramLabel";
+            VersionProgramLabel.Size = new Size(31, 15);
+            VersionProgramLabel.TabIndex = 2;
+            VersionProgramLabel.Text = "v 1.0";
             // 
-            // label6
+            // AuthorSurnameLabel
             // 
-            label6.Anchor = AnchorStyles.Left;
-            label6.AutoSize = true;
-            label6.Location = new Point(108, 93);
-            label6.Margin = new Padding(3, 10, 3, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(106, 15);
-            label6.TabIndex = 3;
-            label6.Text = "Roman Emelyanov";
+            AuthorSurnameLabel.Anchor = AnchorStyles.Left;
+            AuthorSurnameLabel.AutoSize = true;
+            AuthorSurnameLabel.Location = new Point(108, 93);
+            AuthorSurnameLabel.Margin = new Padding(3, 10, 3, 0);
+            AuthorSurnameLabel.Name = "AuthorSurnameLabel";
+            AuthorSurnameLabel.Size = new Size(106, 15);
+            AuthorSurnameLabel.TabIndex = 3;
+            AuthorSurnameLabel.Text = "Roman Emelyanov";
             // 
-            // label3
+            // AuthorLabel
             // 
-            label3.Anchor = AnchorStyles.Left;
-            label3.AutoSize = true;
-            label3.Location = new Point(16, 93);
-            label3.Name = "label3";
-            label3.Size = new Size(47, 15);
-            label3.TabIndex = 0;
-            label3.Text = "Author:";
+            AuthorLabel.Anchor = AnchorStyles.Left;
+            AuthorLabel.AutoSize = true;
+            AuthorLabel.Location = new Point(16, 93);
+            AuthorLabel.Name = "AuthorLabel";
+            AuthorLabel.Size = new Size(47, 15);
+            AuthorLabel.TabIndex = 0;
+            AuthorLabel.Text = "Author:";
             // 
-            // label4
+            // EmailLabel
             // 
-            label4.Anchor = AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.Location = new Point(16, 118);
-            label4.Margin = new Padding(3, 10, 3, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(44, 15);
-            label4.TabIndex = 1;
-            label4.Text = "E-mail:";
+            EmailLabel.Anchor = AnchorStyles.Left;
+            EmailLabel.AutoSize = true;
+            EmailLabel.Location = new Point(16, 118);
+            EmailLabel.Margin = new Padding(3, 10, 3, 0);
+            EmailLabel.Name = "EmailLabel";
+            EmailLabel.Size = new Size(44, 15);
+            EmailLabel.TabIndex = 1;
+            EmailLabel.Text = "E-mail:";
             // 
-            // label5
+            // GithubLabel
             // 
-            label5.Anchor = AnchorStyles.Left;
-            label5.AutoSize = true;
-            label5.Location = new Point(16, 143);
-            label5.Margin = new Padding(3, 10, 3, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(46, 15);
-            label5.TabIndex = 2;
-            label5.Text = "Github:";
+            GithubLabel.Anchor = AnchorStyles.Left;
+            GithubLabel.AutoSize = true;
+            GithubLabel.Location = new Point(16, 143);
+            GithubLabel.Margin = new Padding(3, 10, 3, 0);
+            GithubLabel.Name = "GithubLabel";
+            GithubLabel.Size = new Size(46, 15);
+            GithubLabel.TabIndex = 2;
+            GithubLabel.Text = "Github:";
             // 
-            // label7
+            // EmailAddressLabel
             // 
-            label7.Anchor = AnchorStyles.Left;
-            label7.AutoSize = true;
-            label7.Location = new Point(108, 118);
-            label7.Margin = new Padding(3, 10, 3, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(129, 15);
-            label7.TabIndex = 4;
-            label7.Text = "Jerryonimo@yandex.ru";
+            EmailAddressLabel.Anchor = AnchorStyles.Left;
+            EmailAddressLabel.AutoSize = true;
+            EmailAddressLabel.Location = new Point(108, 118);
+            EmailAddressLabel.Margin = new Padding(3, 10, 3, 0);
+            EmailAddressLabel.Name = "EmailAddressLabel";
+            EmailAddressLabel.Size = new Size(129, 15);
+            EmailAddressLabel.TabIndex = 4;
+            EmailAddressLabel.Text = "Jerryonimo@yandex.ru";
             // 
             // MITLicenseTextBox
             // 
@@ -161,26 +161,26 @@
             GithubLinkLabel.TabStop = true;
             GithubLinkLabel.Text = "https://github.com/EmelyanovRoma";
             // 
-            // label8
+            // ImagesDownloadLabel
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(16, 328);
-            label8.Margin = new Padding(3, 0, 0, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(194, 15);
-            label8.TabIndex = 8;
-            label8.Text = "All used images are download from";
+            ImagesDownloadLabel.AutoSize = true;
+            ImagesDownloadLabel.Location = new Point(16, 328);
+            ImagesDownloadLabel.Margin = new Padding(3, 0, 0, 0);
+            ImagesDownloadLabel.Name = "ImagesDownloadLabel";
+            ImagesDownloadLabel.Size = new Size(194, 15);
+            ImagesDownloadLabel.TabIndex = 8;
+            ImagesDownloadLabel.Text = "All used images are download from";
             // 
-            // linkLabel1
+            // WebsiteOfImagesLinkLabel
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(206, 328);
-            linkLabel1.Margin = new Padding(0, 0, 3, 0);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(68, 15);
-            linkLabel1.TabIndex = 9;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "icons8.com";
+            WebsiteOfImagesLinkLabel.AutoSize = true;
+            WebsiteOfImagesLinkLabel.Location = new Point(206, 328);
+            WebsiteOfImagesLinkLabel.Margin = new Padding(0, 0, 3, 0);
+            WebsiteOfImagesLinkLabel.Name = "WebsiteOfImagesLinkLabel";
+            WebsiteOfImagesLinkLabel.Size = new Size(68, 15);
+            WebsiteOfImagesLinkLabel.TabIndex = 9;
+            WebsiteOfImagesLinkLabel.TabStop = true;
+            WebsiteOfImagesLinkLabel.Text = "icons8.com";
             // 
             // AboutForm
             // 
@@ -188,17 +188,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(525, 407);
-            Controls.Add(linkLabel1);
-            Controls.Add(label8);
+            Controls.Add(WebsiteOfImagesLinkLabel);
+            Controls.Add(ImagesDownloadLabel);
             Controls.Add(GithubLinkLabel);
             Controls.Add(MITLicenseTextBox);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label4);
-            Controls.Add(label1);
-            Controls.Add(label5);
+            Controls.Add(EmailAddressLabel);
+            Controls.Add(AuthorSurnameLabel);
+            Controls.Add(AuthorLabel);
+            Controls.Add(VersionProgramLabel);
+            Controls.Add(EmailLabel);
+            Controls.Add(NameProgramLabel);
+            Controls.Add(GithubLabel);
             Controls.Add(ControlPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "AboutForm";
@@ -213,16 +213,16 @@
 
         private Panel ControlPanel;
         private Button OKButton;
-        private Label label1;
-        private Label label2;
-        private Label label6;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label7;
+        private Label NameProgramLabel;
+        private Label VersionProgramLabel;
+        private Label AuthorSurnameLabel;
+        private Label AuthorLabel;
+        private Label EmailLabel;
+        private Label GithubLabel;
+        private Label EmailAddressLabel;
         private TextBox MITLicenseTextBox;
         private LinkLabel GithubLinkLabel;
-        private Label label8;
-        private LinkLabel linkLabel1;
+        private Label ImagesDownloadLabel;
+        private LinkLabel WebsiteOfImagesLinkLabel;
     }
 }

@@ -40,6 +40,7 @@
             ContactsListBox = new ListBox();
             InformationAboutContactPanel = new Panel();
             BirthdayPanel = new Panel();
+            BirthdayPanelCloseButton = new PictureBox();
             BirthdaySurnamesLabel = new Label();
             TodayIsBirthdayOfLabel = new Label();
             BirthdayPanelPictureBox = new PictureBox();
@@ -54,7 +55,6 @@
             FullNameTextBox = new TextBox();
             FullNameLabel = new Label();
             PhotoPictureBox = new PictureBox();
-            BirthdayPanelCloseButton = new PictureBox();
             MainTableLayoutPanel.SuspendLayout();
             ListContactsPanel.SuspendLayout();
             ButtonsTableLayoutPanel.SuspendLayout();
@@ -63,9 +63,9 @@
             ((System.ComponentModel.ISupportInitialize)AddContactButton).BeginInit();
             InformationAboutContactPanel.SuspendLayout();
             BirthdayPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)BirthdayPanelCloseButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BirthdayPanelPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)BirthdayPanelCloseButton).BeginInit();
             SuspendLayout();
             // 
             // MainTableLayoutPanel
@@ -214,6 +214,17 @@
             BirthdayPanel.Size = new Size(538, 76);
             BirthdayPanel.TabIndex = 11;
             // 
+            // BirthdayPanelCloseButton
+            // 
+            BirthdayPanelCloseButton.Anchor = AnchorStyles.Right;
+            BirthdayPanelCloseButton.Image = Properties.Resources.close_32x32;
+            BirthdayPanelCloseButton.Location = new Point(503, 3);
+            BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
+            BirthdayPanelCloseButton.Size = new Size(32, 32);
+            BirthdayPanelCloseButton.SizeMode = PictureBoxSizeMode.StretchImage;
+            BirthdayPanelCloseButton.TabIndex = 3;
+            BirthdayPanelCloseButton.TabStop = false;
+            // 
             // BirthdaySurnamesLabel
             // 
             BirthdaySurnamesLabel.AutoSize = true;
@@ -350,16 +361,6 @@
             PhotoPictureBox.TabIndex = 0;
             PhotoPictureBox.TabStop = false;
             // 
-            // BirthdayPanelCloseButton
-            // 
-            BirthdayPanelCloseButton.Image = Properties.Resources.close_32x32;
-            BirthdayPanelCloseButton.Location = new Point(503, 3);
-            BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
-            BirthdayPanelCloseButton.Size = new Size(32, 32);
-            BirthdayPanelCloseButton.SizeMode = PictureBoxSizeMode.CenterImage;
-            BirthdayPanelCloseButton.TabIndex = 3;
-            BirthdayPanelCloseButton.TabStop = false;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -384,9 +385,9 @@
             InformationAboutContactPanel.PerformLayout();
             BirthdayPanel.ResumeLayout(false);
             BirthdayPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)BirthdayPanelCloseButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)BirthdayPanelPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).EndInit();
-            ((System.ComponentModel.ISupportInitialize)BirthdayPanelCloseButton).EndInit();
             ResumeLayout(false);
         }
 
