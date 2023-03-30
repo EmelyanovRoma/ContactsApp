@@ -84,5 +84,14 @@ namespace ContactsApp.View
         {
             e.Handled = true;
         }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                AboutForm form = new AboutForm();
+                form.ShowDialog();
+            }
+        }
     }
 }

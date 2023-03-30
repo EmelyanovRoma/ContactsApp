@@ -40,7 +40,6 @@
             ContactsListBox = new ListBox();
             InformationAboutContactPanel = new Panel();
             BirthdayPanel = new Panel();
-            BirthdayPanelCloseButton = new Button();
             BirthdaySurnamesLabel = new Label();
             TodayIsBirthdayOfLabel = new Label();
             BirthdayPanelPictureBox = new PictureBox();
@@ -55,6 +54,7 @@
             FullNameTextBox = new TextBox();
             FullNameLabel = new Label();
             PhotoPictureBox = new PictureBox();
+            BirthdayPanelCloseButton = new PictureBox();
             MainTableLayoutPanel.SuspendLayout();
             ListContactsPanel.SuspendLayout();
             ButtonsTableLayoutPanel.SuspendLayout();
@@ -65,6 +65,7 @@
             BirthdayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BirthdayPanelPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BirthdayPanelCloseButton).BeginInit();
             SuspendLayout();
             // 
             // MainTableLayoutPanel
@@ -213,18 +214,6 @@
             BirthdayPanel.Size = new Size(538, 76);
             BirthdayPanel.TabIndex = 11;
             // 
-            // BirthdayPanelCloseButton
-            // 
-            BirthdayPanelCloseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            BirthdayPanelCloseButton.FlatAppearance.BorderSize = 0;
-            BirthdayPanelCloseButton.FlatStyle = FlatStyle.Flat;
-            BirthdayPanelCloseButton.Image = Properties.Resources.close_32x32;
-            BirthdayPanelCloseButton.Location = new Point(502, 2);
-            BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
-            BirthdayPanelCloseButton.Size = new Size(32, 32);
-            BirthdayPanelCloseButton.TabIndex = 3;
-            BirthdayPanelCloseButton.UseVisualStyleBackColor = true;
-            // 
             // BirthdaySurnamesLabel
             // 
             BirthdaySurnamesLabel.AutoSize = true;
@@ -361,6 +350,16 @@
             PhotoPictureBox.TabIndex = 0;
             PhotoPictureBox.TabStop = false;
             // 
+            // BirthdayPanelCloseButton
+            // 
+            BirthdayPanelCloseButton.Image = Properties.Resources.close_32x32;
+            BirthdayPanelCloseButton.Location = new Point(503, 3);
+            BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
+            BirthdayPanelCloseButton.Size = new Size(32, 32);
+            BirthdayPanelCloseButton.SizeMode = PictureBoxSizeMode.CenterImage;
+            BirthdayPanelCloseButton.TabIndex = 3;
+            BirthdayPanelCloseButton.TabStop = false;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -369,9 +368,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(MainTableLayoutPanel);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ContactsApp";
+            KeyDown += MainForm_KeyDown;
             MainTableLayoutPanel.ResumeLayout(false);
             ListContactsPanel.ResumeLayout(false);
             ListContactsPanel.PerformLayout();
@@ -385,6 +386,7 @@
             BirthdayPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)BirthdayPanelPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BirthdayPanelCloseButton).EndInit();
             ResumeLayout(false);
         }
 
@@ -412,9 +414,9 @@
         private Label BirthdaySurnamesLabel;
         private Label TodayIsBirthdayOfLabel;
         private PictureBox BirthdayPanelPictureBox;
-        private Button BirthdayPanelCloseButton;
         private PictureBox RemoveContactButton;
         private PictureBox EditContactButton;
         private PictureBox AddContactButton;
+        private PictureBox BirthdayPanelCloseButton;
     }
 }

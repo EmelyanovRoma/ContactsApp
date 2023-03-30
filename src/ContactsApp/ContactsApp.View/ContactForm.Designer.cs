@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             InformationAboutContactPanel = new Panel();
+            DateOfBirthDateTimePicker = new DateTimePicker();
             AddPhotoButton = new PictureBox();
             VKTextBox = new TextBox();
             VKLabel = new Label();
@@ -43,7 +44,6 @@
             ControlPanel = new Panel();
             OKButton = new Button();
             CancelButton = new Button();
-            DateOfBirthDateTimePicker = new DateTimePicker();
             InformationAboutContactPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AddPhotoButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PhotoPictureBox).BeginInit();
@@ -69,6 +69,13 @@
             InformationAboutContactPanel.Name = "InformationAboutContactPanel";
             InformationAboutContactPanel.Size = new Size(525, 304);
             InformationAboutContactPanel.TabIndex = 0;
+            // 
+            // DateOfBirthDateTimePicker
+            // 
+            DateOfBirthDateTimePicker.Location = new Point(118, 197);
+            DateOfBirthDateTimePicker.Name = "DateOfBirthDateTimePicker";
+            DateOfBirthDateTimePicker.Size = new Size(181, 23);
+            DateOfBirthDateTimePicker.TabIndex = 22;
             // 
             // AddPhotoButton
             // 
@@ -204,13 +211,6 @@
             CancelButton.TabIndex = 0;
             CancelButton.Text = "Cancel";
             CancelButton.UseVisualStyleBackColor = true;
-            // 
-            // DateOfBirthDateTimePicker
-            // 
-            DateOfBirthDateTimePicker.Location = new Point(118, 197);
-            DateOfBirthDateTimePicker.Name = "DateOfBirthDateTimePicker";
-            DateOfBirthDateTimePicker.Size = new Size(181, 23);
-            DateOfBirthDateTimePicker.TabIndex = 22;
             // 
             // ContactForm
             // 
