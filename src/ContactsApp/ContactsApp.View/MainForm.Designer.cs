@@ -250,9 +250,9 @@
             // BirthdayPanelPictureBox
             // 
             BirthdayPanelPictureBox.Image = Properties.Resources.info_48x48;
-            BirthdayPanelPictureBox.Location = new Point(3, 3);
+            BirthdayPanelPictureBox.Location = new Point(13, 14);
             BirthdayPanelPictureBox.Name = "BirthdayPanelPictureBox";
-            BirthdayPanelPictureBox.Size = new Size(70, 70);
+            BirthdayPanelPictureBox.Size = new Size(48, 48);
             BirthdayPanelPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             BirthdayPanelPictureBox.TabIndex = 0;
             BirthdayPanelPictureBox.TabStop = false;

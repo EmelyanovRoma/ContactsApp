@@ -167,14 +167,14 @@
             ImagesDownloadLabel.Location = new Point(16, 328);
             ImagesDownloadLabel.Margin = new Padding(3, 0, 0, 0);
             ImagesDownloadLabel.Name = "ImagesDownloadLabel";
-            ImagesDownloadLabel.Size = new Size(194, 15);
+            ImagesDownloadLabel.Size = new Size(207, 15);
             ImagesDownloadLabel.TabIndex = 8;
-            ImagesDownloadLabel.Text = "All used images are download from";
+            ImagesDownloadLabel.Text = "All used images are downloaded from";
             // 
             // WebsiteOfImagesLinkLabel
             // 
             WebsiteOfImagesLinkLabel.AutoSize = true;
-            WebsiteOfImagesLinkLabel.Location = new Point(206, 328);
+            WebsiteOfImagesLinkLabel.Location = new Point(219, 328);
             WebsiteOfImagesLinkLabel.Margin = new Padding(0, 0, 3, 0);
             WebsiteOfImagesLinkLabel.Name = "WebsiteOfImagesLinkLabel";
             WebsiteOfImagesLinkLabel.Size = new Size(68, 15);
