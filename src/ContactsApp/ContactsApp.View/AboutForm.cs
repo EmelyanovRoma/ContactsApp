@@ -26,10 +26,10 @@ namespace ContactsApp.View
         private void GithubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(
-                new ProcessStartInfo 
-                { 
-                    FileName = "https://github.com/EmelyanovRoma", 
-                    UseShellExecute = true 
+                new ProcessStartInfo
+                {
+                    FileName = "https://github.com/EmelyanovRoma",
+                    UseShellExecute = true
                 });
         }
 

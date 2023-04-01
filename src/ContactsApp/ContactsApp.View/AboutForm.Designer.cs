@@ -203,6 +203,8 @@
             Controls.Add(GithubLabel);
             Controls.Add(ControlPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AboutForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;

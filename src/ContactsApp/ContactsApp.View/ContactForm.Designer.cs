@@ -221,6 +221,8 @@
             Controls.Add(ControlPanel);
             Controls.Add(InformationAboutContactPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ContactForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
