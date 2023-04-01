@@ -174,6 +174,7 @@
             // 
             ContactsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ContactsListBox.FormattingEnabled = true;
+            ContactsListBox.IntegralHeight = false;
             ContactsListBox.ItemHeight = 15;
             ContactsListBox.Items.AddRange(new object[] { "Абакумов Дмитрий", "Абалышев Михаил", "Балтабаев Егор", "Веденин Семен", "Виргунов Михаил", "Глазков Павел", "Голов Станислав" });
             ContactsListBox.Location = new Point(3, 32);
