@@ -160,6 +160,7 @@
             GithubLinkLabel.TabIndex = 7;
             GithubLinkLabel.TabStop = true;
             GithubLinkLabel.Text = "https://github.com/EmelyanovRoma";
+            GithubLinkLabel.LinkClicked += GithubLinkLabel_LinkClicked;
             // 
             // ImagesDownloadLabel
             // 
@@ -181,6 +182,7 @@
             WebsiteOfImagesLinkLabel.TabIndex = 9;
             WebsiteOfImagesLinkLabel.TabStop = true;
             WebsiteOfImagesLinkLabel.Text = "icons8.com";
+            WebsiteOfImagesLinkLabel.LinkClicked += WebsiteOfImagesLinkLabel_LinkClicked;
             // 
             // AboutForm
             // 

@@ -89,9 +89,14 @@ namespace ContactsApp.View
         {
             if (e.KeyCode == Keys.F1)
             {
-                AboutForm form = new AboutForm();
+                var form = new AboutForm();
                 form.ShowDialog();
             }
+        }
+
+        private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
+        {
+            BirthdayPanel.Visible = false;
         }
     }
 }

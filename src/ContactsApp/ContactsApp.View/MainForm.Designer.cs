@@ -224,6 +224,7 @@
             BirthdayPanelCloseButton.SizeMode = PictureBoxSizeMode.StretchImage;
             BirthdayPanelCloseButton.TabIndex = 3;
             BirthdayPanelCloseButton.TabStop = false;
+            BirthdayPanelCloseButton.Click += BirthdayPanelCloseButton_Click;
             // 
             // BirthdaySurnamesLabel
             // 
@@ -299,7 +300,7 @@
             PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             PhoneNumberTextBox.Size = new Size(181, 23);
             PhoneNumberTextBox.TabIndex = 6;
-            PhoneNumberTextBox.Text = "+7(999) 111-22-33";
+            PhoneNumberTextBox.Text = "+7 (999) 111-22-33";
             PhoneNumberTextBox.KeyPress += PhoneNumberTextBox_KeyPress;
             // 
             // PhoneNumberLabel
