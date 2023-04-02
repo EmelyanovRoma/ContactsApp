@@ -174,6 +174,7 @@
             // 
             ContactsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ContactsListBox.FormattingEnabled = true;
+            ContactsListBox.IntegralHeight = false;
             ContactsListBox.ItemHeight = 15;
             ContactsListBox.Items.AddRange(new object[] { "Абакумов Дмитрий", "Абалышев Михаил", "Балтабаев Егор", "Веденин Семен", "Виргунов Михаил", "Глазков Павел", "Голов Станислав" });
             ContactsListBox.Location = new Point(3, 32);
@@ -224,6 +225,7 @@
             BirthdayPanelCloseButton.SizeMode = PictureBoxSizeMode.StretchImage;
             BirthdayPanelCloseButton.TabIndex = 3;
             BirthdayPanelCloseButton.TabStop = false;
+            BirthdayPanelCloseButton.Click += BirthdayPanelCloseButton_Click;
             // 
             // BirthdaySurnamesLabel
             // 
@@ -250,9 +252,9 @@
             // BirthdayPanelPictureBox
             // 
             BirthdayPanelPictureBox.Image = Properties.Resources.info_48x48;
-            BirthdayPanelPictureBox.Location = new Point(3, 3);
+            BirthdayPanelPictureBox.Location = new Point(13, 14);
             BirthdayPanelPictureBox.Name = "BirthdayPanelPictureBox";
-            BirthdayPanelPictureBox.Size = new Size(70, 70);
+            BirthdayPanelPictureBox.Size = new Size(48, 48);
             BirthdayPanelPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             BirthdayPanelPictureBox.TabIndex = 0;
             BirthdayPanelPictureBox.TabStop = false;
@@ -299,7 +301,7 @@
             PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             PhoneNumberTextBox.Size = new Size(181, 23);
             PhoneNumberTextBox.TabIndex = 6;
-            PhoneNumberTextBox.Text = "+7(999) 111-22-33";
+            PhoneNumberTextBox.Text = "+7 (999) 111-22-33";
             PhoneNumberTextBox.KeyPress += PhoneNumberTextBox_KeyPress;
             // 
             // PhoneNumberLabel

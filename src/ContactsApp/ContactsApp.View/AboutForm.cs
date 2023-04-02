@@ -22,5 +22,25 @@ namespace ContactsApp.View
         {
             e.Handled = true;
         }
+
+        private void GithubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(
+                new ProcessStartInfo
+                {
+                    FileName = "https://github.com/EmelyanovRoma",
+                    UseShellExecute = true
+                });
+        }
+
+        private void WebsiteOfImagesLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(
+                new ProcessStartInfo
+                {
+                    FileName = "https://icons8.ru/",
+                    UseShellExecute = true
+                });
+        }
     }
 }
