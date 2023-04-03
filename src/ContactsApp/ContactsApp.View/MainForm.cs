@@ -63,6 +63,21 @@ namespace ContactsApp.View
             _project.Contacts.Add(newContact);
         }
 
+        private void RemoveContact(int index)
+        {
+            if (index == -1)
+                return;
+            
+            if (MessageBox.Show(
+                "Do you really want to remove " + ContactsListBox.Items[index],
+                "Warning!", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                ContactsListBox.Items.RemoveAt(index);
+                _project.Contacts.RemoveAt(index);
+            }           
+        }
+
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             //var form = new ContactForm();
@@ -103,7 +118,8 @@ namespace ContactsApp.View
 
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
-
+            RemoveContact(ContactsListBox.SelectedIndex);
+            UpdateListBox();
         }
 
         private void RemoveContactButton_MouseEnter(object sender, EventArgs e)
