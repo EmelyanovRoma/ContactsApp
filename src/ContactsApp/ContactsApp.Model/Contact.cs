@@ -49,7 +49,8 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100)
+                if (value.Length > 100 || 
+                    Regex.IsMatch(value, "^[A-Яа-я][A-Яа-я]+\\s[A-Яа-я][A-Яа-я]+$"))
                 {
                     throw new ArgumentException(
                         $"Full name length must not exceed 100 characters.");
@@ -148,11 +149,11 @@ namespace ContactsApp.Model
         /// <summary>
         /// Создает экземпляр <see cref="Contact">.
         /// </summary>
-        /// <param name="fullName">Полное имя контакта</param>
-        /// <param name="email">Электронная поча контакта</param>
-        /// <param name="phoneNumber">Телефонный номер контакта</param>
-        /// <param name="dateOfBirth">Дата рождения контакта</param>
-        /// <param name="idVK">Идентификационный номер VK контакта</param>
+        /// <param name="fullName">Полное имя контакта.</param>
+        /// <param name="email">Электронная поча контакта.</param>
+        /// <param name="phoneNumber">Телефонный номер контакта.</param>
+        /// <param name="dateOfBirth">Дата рождения контакта.</param>
+        /// <param name="idVK">Идентификационный номер VK контакта.</param>
         public Contact(string fullName, string email, string phoneNumber, DateTime dateOfBirth, string idVK)
         {
             FullName = fullName;
