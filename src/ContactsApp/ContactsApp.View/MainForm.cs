@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.Design;
 using ContactsApp.Model;
 
@@ -85,6 +86,15 @@ namespace ContactsApp.View
             PhoneNumberTextBox.Text = _project.Contacts[index].PhoneNumber;
             DateOfBirthTextBox.Text = _project.Contacts[index].DateOfBirth.ToString();
             VKTextBox.Text = _project.Contacts[index].IDVK;
+        }
+
+        private void ClearSelectedContact()
+        {
+            FullNameTextBox.Text    = "";
+            EmailTextBox.Text       = "";
+            PhoneNumberTextBox.Text = "";
+            DateOfBirthTextBox.Text = "";
+            VKTextBox.Text          = "";
         }
 
         private void AddContactButton_Click(object sender, EventArgs e)
@@ -196,7 +206,10 @@ namespace ContactsApp.View
 
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateSelectedContact(ContactsListBox.SelectedIndex);
+            if (ContactsListBox.SelectedIndex == -1)
+                ClearSelectedContact();
+            else
+                UpdateSelectedContact(ContactsListBox.SelectedIndex);
         }
     }
 }
