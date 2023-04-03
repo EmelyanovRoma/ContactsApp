@@ -117,7 +117,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value > DateTime.Today || value.Year <= 1900)
+                if (value > DateTime.Today || value.Year < 1900)
                 {
                     throw new ArgumentException($"Invalid date format.");
                 }
