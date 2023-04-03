@@ -226,6 +226,8 @@
             BirthdayPanelCloseButton.TabIndex = 3;
             BirthdayPanelCloseButton.TabStop = false;
             BirthdayPanelCloseButton.Click += BirthdayPanelCloseButton_Click;
+            BirthdayPanelCloseButton.MouseEnter += BirthdayPanelCloseButton_MouseEnter;
+            BirthdayPanelCloseButton.MouseLeave += BirthdayPanelCloseButton_MouseLeave;
             // 
             // BirthdaySurnamesLabel
             // 

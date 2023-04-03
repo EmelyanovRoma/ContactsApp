@@ -49,8 +49,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100 || 
-                    Regex.IsMatch(value, "^[A-Яа-я][A-Яа-я]+\\s[A-Яа-я][A-Яа-я]+$"))
+                if (value.Length > 100 )
                 {
                     throw new ArgumentException(
                         $"Full name length must not exceed 100 characters.");
