@@ -181,6 +181,7 @@
             ContactsListBox.Name = "ContactsListBox";
             ContactsListBox.Size = new Size(238, 379);
             ContactsListBox.TabIndex = 0;
+            ContactsListBox.SelectedIndexChanged += ContactsListBox_SelectedIndexChanged;
             // 
             // InformationAboutContactPanel
             // 
@@ -218,6 +219,7 @@
             // BirthdayPanelCloseButton
             // 
             BirthdayPanelCloseButton.Anchor = AnchorStyles.Right;
+            BirthdayPanelCloseButton.Cursor = Cursors.Hand;
             BirthdayPanelCloseButton.Image = Properties.Resources.close_32x32;
             BirthdayPanelCloseButton.Location = new Point(503, 3);
             BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";

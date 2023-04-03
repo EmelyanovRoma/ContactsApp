@@ -22,7 +22,7 @@ namespace ContactsApp.View
         }
 
         private void AddContact()
-        {           
+        {
             string[] fullNames =
             {
                 "Романович Генадий",
@@ -67,7 +67,7 @@ namespace ContactsApp.View
         {
             if (index == -1)
                 return;
-            
+
             if (MessageBox.Show(
                 "Do you really want to remove " + ContactsListBox.Items[index],
                 "Warning!", MessageBoxButtons.OKCancel,
@@ -75,7 +75,16 @@ namespace ContactsApp.View
             {
                 ContactsListBox.Items.RemoveAt(index);
                 _project.Contacts.RemoveAt(index);
-            }           
+            }
+        }
+
+        private void UpdateSelectedContact(int index)
+        {
+            FullNameTextBox.Text = _project.Contacts[index].FullName;
+            EmailTextBox.Text = _project.Contacts[index].Email;
+            PhoneNumberTextBox.Text = _project.Contacts[index].PhoneNumber;
+            DateOfBirthTextBox.Text = _project.Contacts[index].DateOfBirth.ToString();
+            VKTextBox.Text = _project.Contacts[index].IDVK;
         }
 
         private void AddContactButton_Click(object sender, EventArgs e)
@@ -183,6 +192,11 @@ namespace ContactsApp.View
         {
             BirthdayPanelCloseButton.Width = 32;
             BirthdayPanelCloseButton.Height = 32;
+        }
+
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateSelectedContact(ContactsListBox.SelectedIndex);
         }
     }
 }
