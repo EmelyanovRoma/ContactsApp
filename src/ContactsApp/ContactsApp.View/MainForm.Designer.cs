@@ -379,6 +379,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ContactsApp";
+            FormClosing += MainForm_FormClosing;
             KeyDown += MainForm_KeyDown;
             MainTableLayoutPanel.ResumeLayout(false);
             ListContactsPanel.ResumeLayout(false);

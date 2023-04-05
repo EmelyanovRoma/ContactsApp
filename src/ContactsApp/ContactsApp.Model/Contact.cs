@@ -56,7 +56,7 @@ namespace ContactsApp.Model
                 }
                 else
                 {
-                    _fullName = new CultureInfo("ru-RU").TextInfo.ToTitleCase(value);
+                    _fullName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
                 }               
             }
         }

@@ -26,11 +26,11 @@ namespace ContactsApp.View
         {
             string[] fullNames =
             {
-                "Романович Генадий",
-                "Иванов Иван",
-                "Петров Алексей",
-                "Сидоров Александр",
-                "Миронов Игорь"
+                "романович Генадий",
+                "иванов Иван",
+                "петров Алексей",
+                "сидоров Александр",
+                "миронов Игорь"
             };
             string[] emails =
             {
@@ -69,10 +69,11 @@ namespace ContactsApp.View
             if (index == -1)
                 return;
 
-            if (MessageBox.Show(
-                "Do you really want to remove " + ContactsListBox.Items[index],
-                "Warning!", MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Warning) == DialogResult.OK)
+            var message = MessageBox.Show(
+                "Do you really want to remove " + ContactsListBox.Items[index], 
+                "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (message == DialogResult.OK)
             {
                 ContactsListBox.Items.RemoveAt(index);
                 _project.Contacts.RemoveAt(index);
@@ -90,11 +91,11 @@ namespace ContactsApp.View
 
         private void ClearSelectedContact()
         {
-            FullNameTextBox.Text    = "";
-            EmailTextBox.Text       = "";
+            FullNameTextBox.Text = "";
+            EmailTextBox.Text = "";
             PhoneNumberTextBox.Text = "";
             DateOfBirthTextBox.Text = "";
-            VKTextBox.Text          = "";
+            VKTextBox.Text = "";
         }
 
         private void AddContactButton_Click(object sender, EventArgs e)
@@ -210,6 +211,24 @@ namespace ContactsApp.View
                 ClearSelectedContact();
             else
                 UpdateSelectedContact(ContactsListBox.SelectedIndex);
+        }
+
+        private void MainFormClose()
+        {
+            MainForm f1 = new MainForm();
+            f1.Close();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var message = MessageBox.Show(
+                "Do you really want to close the program?", "Warning",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (message == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
