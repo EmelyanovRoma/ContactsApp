@@ -24,44 +24,7 @@ namespace ContactsApp.View
 
         private void AddContact()
         {
-            string[] fullNames =
-            {
-                "романович Генадий",
-                "иванов Иван",
-                "петров Алексей",
-                "сидоров Александр",
-                "миронов Игорь"
-            };
-            string[] emails =
-            {
-                "1@no.mail",
-                "2@no.mail",
-                "3@no.mail",
-                "4@no.mail",
-                "5@no.mail"
-            };
-            string[] phoneNumbers =
-            {
-                "+79500000001",
-                "+79500000002",
-                "+79500000003",
-                "+79500000004",
-                "+79500000005",
-            };
-            string[] idVK =
-            {
-                "123456789",
-                "987654321",
-                "100000000",
-                "200000000",
-                "300000000"
-            };
-
-            Random random = new Random();
-            int value = random.Next(0, 4);
-            Contact newContact = new Contact(fullNames[value], emails[value],
-                phoneNumbers[value], DateTime.Today, idVK[value]);
-            _project.Contacts.Add(newContact);
+            _project.Contacts.Add(ContactFactory.GenerateRandon());
         }
 
         private void RemoveContact(int index)
@@ -211,12 +174,6 @@ namespace ContactsApp.View
                 ClearSelectedContact();
             else
                 UpdateSelectedContact(ContactsListBox.SelectedIndex);
-        }
-
-        private void MainFormClose()
-        {
-            MainForm f1 = new MainForm();
-            f1.Close();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
