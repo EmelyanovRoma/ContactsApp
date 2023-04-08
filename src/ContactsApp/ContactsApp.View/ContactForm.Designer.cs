@@ -161,6 +161,7 @@
             FullNameTextBox.Size = new Size(395, 23);
             FullNameTextBox.TabIndex = 12;
             FullNameTextBox.Text = "Абакумов Дмитрий Николаевич";
+            FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
             // 
             // FullNameLabel
             // 

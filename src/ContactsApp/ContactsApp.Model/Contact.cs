@@ -49,7 +49,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100 )
+                if (value.Length > 100)
                 {
                     throw new ArgumentException(
                         $"Full name length must not exceed 100 characters.");
