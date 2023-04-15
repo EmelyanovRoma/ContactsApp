@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ContactsApp.Model
+﻿namespace ContactsApp.Model
 {
     /// <summary>
     /// Описывает проект.
@@ -14,21 +8,15 @@ namespace ContactsApp.Model
         /// <summary>
         /// Список контактов.
         /// </summary>
-        private List<Contact> _contacts;
+        public List<Contact> Contacts { get; set; } = new List<Contact>();
 
         /// <summary>
-        /// Возвращает или задает список контактов.
+        /// Создает экземпляр <see cref="Project"/>.
         /// </summary>
-        public List<Contact> Contacts
+        /// <param name="contacts">Список контактов.</param>
+        public Project(List<Contact> contacts)
         {
-            get
-            {
-                return _contacts;
-            }
-            set
-            {
-                _contacts = value;
-            }
+            Contacts = contacts;
         }
 
         /// <summary>
@@ -73,15 +61,6 @@ namespace ContactsApp.Model
                 }
             }
             return contacts;
-        }
-
-        /// <summary>
-        /// Создает экземпляр <see cref="Project">.
-        /// </summary>
-        /// <param name="contacts">Список контактов.</param>
-        public Project(List<Contact> contacts)
-        {
-            Contacts = contacts;
         }
     }
 }
