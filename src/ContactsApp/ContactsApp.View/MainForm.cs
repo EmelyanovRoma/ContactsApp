@@ -4,15 +4,27 @@ using ContactsApp.Model;
 
 namespace ContactsApp.View
 {
+    /// <summary>
+    /// Класс главнйо формы окна приложения.
+    /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Объект класса Project.
+        /// </summary>
         private Project _project = new Project(new List<Contact>());
 
+        /// <summary>
+        /// Конструктор главной формы.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Метод для обновления списка контактов на форме.
+        /// </summary>
         private void UpdateListBox()
         {
             ContactsListBox.Items.Clear();
@@ -22,11 +34,18 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Метод добавления нового контакта.
+        /// </summary>
         private void AddContact()
         {
             _project.Contacts.Add(ContactFactory.GenerateRandon());
         }
-
+        
+        /// <summary>
+        /// Метод удаления контакта
+        /// </summary>
+        /// <param name="index"></param>
         private void RemoveContact(int index)
         {
             if (index == -1)
@@ -43,6 +62,10 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Метод обновления текстовых полей на форме.
+        /// </summary>
+        /// <param name="index"></param>
         private void UpdateSelectedContact(int index)
         {
             FullNameTextBox.Text = _project.Contacts[index].FullName;
@@ -52,6 +75,9 @@ namespace ContactsApp.View
             VKTextBox.Text = _project.Contacts[index].IDVK;
         }
 
+        /// <summary>
+        /// Метод очитски текстовых полей на форме.
+        /// </summary>
         private void ClearSelectedContact()
         {
             FullNameTextBox.Text = "";
