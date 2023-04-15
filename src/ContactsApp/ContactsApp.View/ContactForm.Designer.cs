@@ -123,6 +123,7 @@
             PhoneNumberTextBox.Size = new Size(181, 23);
             PhoneNumberTextBox.TabIndex = 16;
             PhoneNumberTextBox.Text = "+7 (999) 111-22-33";
+            PhoneNumberTextBox.TextChanged += PhoneNumberTextBox_TextChanged;
             // 
             // PhoneNumberLabel
             // 
@@ -142,6 +143,7 @@
             EmailTextBox.Size = new Size(395, 23);
             EmailTextBox.TabIndex = 14;
             EmailTextBox.Text = "abakumov@no.mail";
+            EmailTextBox.TextChanged += EmailTextBox_TextChanged;
             // 
             // EmailLabel
             // 
@@ -160,7 +162,7 @@
             FullNameTextBox.Name = "FullNameTextBox";
             FullNameTextBox.Size = new Size(395, 23);
             FullNameTextBox.TabIndex = 12;
-            FullNameTextBox.Text = "Абакумов Дмитрий Николаевич";
+            FullNameTextBox.Text = "абакумов";
             FullNameTextBox.TextChanged += FullNameTextBox_TextChanged;
             // 
             // FullNameLabel

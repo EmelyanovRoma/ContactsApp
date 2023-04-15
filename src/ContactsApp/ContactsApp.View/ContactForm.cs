@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactsApp.Model;
@@ -14,6 +16,9 @@ namespace ContactsApp.View
     public partial class ContactForm : Form
     {
         private Contact _contact = ContactFactory.GenerateRandon();
+        private const string _fullNameRegex = @"^[a-zA-Zа-яА-Я\s]+$";
+        private const string _emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        private const string _phoneNumberRegex = @"^([+]?[0-9\s-\(\)]{3,25})*$";
 
         public ContactForm()
         {
@@ -47,7 +52,39 @@ namespace ContactsApp.View
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
+            if (FullNameTextBox.Text.Length > 100 ||
+                !Regex.IsMatch(FullNameTextBox.Text, _fullNameRegex))
+            {
+                FullNameTextBox.Text =
+                    FullNameTextBox.Text.Remove(FullNameTextBox.Text.Length - 1);
+                throw new ArgumentException(
+                    $"The full name must contain only Russian or English " +
+                    $"characters and the length must not exceed 100 characters.");
+            }
+        }
 
+        private void EmailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(EmailTextBox.Text, _emailRegex))
+            {
+                EmailTextBox.Text =
+                    EmailTextBox.Text.Remove(EmailTextBox.Text.Length - 1);
+                throw new ArgumentException(
+                    $"Invalid email address. Email example: " +
+                    $"characters: '0-9', '+', '(', ')', '-'.");
+            }
+        }
+
+        private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(PhoneNumberTextBox.Text, _phoneNumberRegex))
+            {
+                PhoneNumberTextBox.Text = 
+                    PhoneNumberTextBox.Text.Remove(PhoneNumberTextBox.Text.Length - 1);
+                throw new ArgumentException(
+                    $"The phone number must contain the following " +
+                    $"characters: '0-9', '+', '(', ')', '-'.");
+            }
         }
     }
 }
