@@ -55,8 +55,6 @@ namespace ContactsApp.View
             if (FullNameTextBox.Text.Length > 100 ||
                 !Regex.IsMatch(FullNameTextBox.Text, _fullNameRegex))
             {
-                FullNameTextBox.Text =
-                    FullNameTextBox.Text.Remove(FullNameTextBox.Text.Length - 1);
                 throw new ArgumentException(
                     $"The full name must contain only Russian or English " +
                     $"characters and the length must not exceed 100 characters.");
@@ -67,8 +65,6 @@ namespace ContactsApp.View
         {
             if (!Regex.IsMatch(EmailTextBox.Text, _emailRegex))
             {
-                EmailTextBox.Text =
-                    EmailTextBox.Text.Remove(EmailTextBox.Text.Length - 1);
                 throw new ArgumentException(
                     $"Invalid email address. Email example: " +
                     $"characters: '0-9', '+', '(', ')', '-'.");
@@ -79,8 +75,6 @@ namespace ContactsApp.View
         {
             if (!Regex.IsMatch(PhoneNumberTextBox.Text, _phoneNumberRegex))
             {
-                PhoneNumberTextBox.Text = 
-                    PhoneNumberTextBox.Text.Remove(PhoneNumberTextBox.Text.Length - 1);
                 throw new ArgumentException(
                     $"The phone number must contain the following " +
                     $"characters: '0-9', '+', '(', ')', '-'.");
