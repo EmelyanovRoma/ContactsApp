@@ -43,7 +43,7 @@ namespace ContactsApp.Model
         /// Поиск именинников в списке контактов.
         /// </summary>
         /// <returns>Список именинников</returns>
-        public List<Contact> SearchBirthdayPersons()
+        public List<Contact> SearchBirthdayContacts()
         {
             List<Contact> contacts = new List<Contact>();
             for (int i = 0; i < Contacts.Count; i++)
