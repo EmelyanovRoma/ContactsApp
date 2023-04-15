@@ -67,7 +67,7 @@ namespace ContactsApp.Model
             List<Contact> contacts = new List<Contact>();
             for (int i = 0; i < Contacts.Count; i++)
             {
-                if (Contacts[i].FullName.Contains(substring))
+                if (Contacts[i].FullName.ToLower().Contains(substring.ToLower()))
                 {
                     contacts.Add(Contacts[i]);
                 }
