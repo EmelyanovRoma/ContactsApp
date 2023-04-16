@@ -8,7 +8,7 @@ namespace ContactsApp.View
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Объект класса Project.
+        /// Объект класса <see cref="Project"/>.
         /// </summary>
         private Project _project = new Project(new List<Contact>());
 

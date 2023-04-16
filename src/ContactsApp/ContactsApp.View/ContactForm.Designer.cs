@@ -76,6 +76,7 @@
             DateOfBirthDateTimePicker.Name = "DateOfBirthDateTimePicker";
             DateOfBirthDateTimePicker.Size = new Size(181, 23);
             DateOfBirthDateTimePicker.TabIndex = 22;
+            DateOfBirthDateTimePicker.ValueChanged += DateOfBirthDateTimePicker_ValueChanged;
             // 
             // AddPhotoButton
             // 
@@ -95,6 +96,7 @@
             VKTextBox.Name = "VKTextBox";
             VKTextBox.Size = new Size(181, 23);
             VKTextBox.TabIndex = 20;
+            VKTextBox.TextChanged += VKTextBox_TextChanged;
             // 
             // VKLabel
             // 

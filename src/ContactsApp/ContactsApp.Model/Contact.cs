@@ -9,13 +9,31 @@ namespace ContactsApp.Model
     public class Contact : ICloneable
     {
         /// <summary>
-        /// Паттерн для проверки номера телефона
-        /// 
+        /// Паттерн для проверки имени.
+        /// </summary>
+        private const string _fullNameRegex = @"^[A-Яа-я][A-Яа-я]+\s[A-Яа-я][A-Яа-я]+$";
+
+        /// <summary>
+        /// Паттерн для проверки номера телефона.
+        /// +79500000001,
+        /// 79500000001,
+        /// 89500000001,
+        /// 8(950)000-00-01,
+        /// 380(67)777-7-777,
+        /// +13435465566.
         /// </summary>
         private const string _phoneNumberRegex = @"^([+]?[0-9\s-\(\)]{3,25})*$";
 
         /// <summary>
-        /// Полное имя контакта
+        /// Паттерн для проверки электронного адреса.
+        /// example@no.mail,
+        /// example_ex@no.mail,
+        /// example-ex@no.mail.
+        /// </summary>
+        private const string _emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+
+        /// <summary>
+        /// Полное имя контакта.
         /// </summary>
         private string _fullName;
 
@@ -50,15 +68,12 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100)
+                if (value.Length > 100 || !Regex.IsMatch(value, _fullNameRegex))
                 {
                     throw new ArgumentException(
                         $"Full name length must not exceed 100 characters.");
                 }
-                else
-                {
-                    _fullName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
-                }               
+                _fullName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);             
             }
         }
 
@@ -73,10 +88,11 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100)
+                if (value.Length > 100 || !Regex.IsMatch(value, _emailRegex))
                 {
                     throw new ArgumentException(
-                        $"E-mail length must not exceed 100 characters.");
+                        $"Invalid email address. Email example: " +
+                        $"example@no.mail");
                 }
                 _email = value;
             }
@@ -93,16 +109,13 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (Regex.IsMatch(value, _phoneNumberRegex))
-                {
-                    _phoneNumber = value;
-                }
-                else
+                if (!Regex.IsMatch(value, _phoneNumberRegex))
                 {
                     throw new ArgumentException(
-                        $"The phone number must contain the following" +
-                        $" characters: '0-9', '+', '(', ')', '-'.");
+                       $"The phone number must contain the following" +
+                       $" characters: '0-9', '+', '(', ')', '-'.");
                 }
+                _phoneNumber = value;
             }
         }
 
