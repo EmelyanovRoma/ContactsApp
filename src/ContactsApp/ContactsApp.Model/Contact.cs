@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace ContactsApp.Model
@@ -13,6 +8,12 @@ namespace ContactsApp.Model
     /// </summary>
     public class Contact : ICloneable
     {
+        /// <summary>
+        /// Паттерн для проверки номера телефона
+        /// 
+        /// </summary>
+        private const string _phoneNumberRegex = @"^([+]?[0-9\s-\(\)]{3,25})*$";
+
         /// <summary>
         /// Полное имя контакта
         /// </summary>
@@ -92,8 +93,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                string pattern = @"^([+]?[0-9\s-\(\)]{3,25})*$";
-                if (Regex.IsMatch(value, pattern))
+                if (Regex.IsMatch(value, _phoneNumberRegex))
                 {
                     _phoneNumber = value;
                 }
@@ -117,7 +117,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value > DateTime.Today || value.Year < 1900)
+                if (value.Year < 1900 || value > DateTime.Now)
                 {
                     throw new ArgumentException($"Invalid date format.");
                 }
@@ -146,7 +146,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Создает экземпляр <see cref="Contact">.
+        /// Создает экземпляр <see cref="Contact"/>.
         /// </summary>
         /// <param name="fullName">Полное имя контакта.</param>
         /// <param name="email">Электронная поча контакта.</param>
@@ -163,9 +163,9 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Клонирует существующий экземпляр <see cref="Contact">.
+        /// Клонирует существующий экземпляр <see cref="Contact"/>.
         /// </summary>
-        /// <returns>Возвращает новый экземпляр <see cref="Contact">.</returns>
+        /// <returns>Возвращает новый экземпляр <see cref="Contact"/>.</returns>
         public object Clone()
         {
             return new Contact(FullName, Email, PhoneNumber, DateOfBirth, IDVK);

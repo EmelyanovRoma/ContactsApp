@@ -1,9 +1,4 @@
 ﻿using ContactsApp.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactsApp.View
 {
@@ -16,7 +11,7 @@ namespace ContactsApp.View
         /// Генерирует случайный новый контакт.
         /// </summary>
         /// <returns>Новый контакт.</returns>
-        public static Contact GenerateRandon()
+        public static Contact GenerateRandom()
         {
             string[] fullNames =
             {
@@ -52,9 +47,9 @@ namespace ContactsApp.View
             };
 
             Random random = new Random();
-            int value = random.Next(0, 4);
-            return new Contact(fullNames[value], emails[value], 
-                phoneNumbers[value], DateTime.Today, idVK[value]);
+            int index = random.Next(0, 4);
+            return new Contact(fullNames[index], emails[index], 
+                phoneNumbers[index], DateTime.Today, idVK[index]);
         }
     }
 }
