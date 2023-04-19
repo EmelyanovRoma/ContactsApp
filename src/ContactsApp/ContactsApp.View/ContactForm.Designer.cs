@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             InformationAboutContactPanel = new Panel();
-            DateOfBirthDateTimePicker = new DateTimePicker();
+            DateOfBirthDateTimePicker = new ContactDateTimePicker();
             AddPhotoButton = new PictureBox();
             VKTextBox = new TextBox();
             VKLabel = new Label();
@@ -72,10 +72,15 @@
             // 
             // DateOfBirthDateTimePicker
             // 
+            DateOfBirthDateTimePicker.BorderColor = Color.FromArgb(122, 122, 122);
+            DateOfBirthDateTimePicker.BorderSize = 1;
+            DateOfBirthDateTimePicker.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             DateOfBirthDateTimePicker.Location = new Point(118, 197);
+            DateOfBirthDateTimePicker.MinimumSize = new Size(0, 23);
             DateOfBirthDateTimePicker.Name = "DateOfBirthDateTimePicker";
             DateOfBirthDateTimePicker.Size = new Size(181, 23);
             DateOfBirthDateTimePicker.TabIndex = 22;
+            DateOfBirthDateTimePicker.TextColor = Color.Black;
             DateOfBirthDateTimePicker.ValueChanged += DateOfBirthDateTimePicker_ValueChanged;
             // 
             // AddPhotoButton
@@ -92,6 +97,7 @@
             // 
             // VKTextBox
             // 
+            VKTextBox.BorderStyle = BorderStyle.FixedSingle;
             VKTextBox.Location = new Point(118, 251);
             VKTextBox.Name = "VKTextBox";
             VKTextBox.Size = new Size(181, 23);
@@ -159,7 +165,6 @@
             // 
             // FullNameTextBox
             // 
-            FullNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             FullNameTextBox.Location = new Point(118, 33);
             FullNameTextBox.Name = "FullNameTextBox";
             FullNameTextBox.Size = new Size(395, 23);
@@ -256,6 +261,6 @@
         private Label EmailLabel;
         private TextBox FullNameTextBox;
         private Label FullNameLabel;
-        private DateTimePicker DateOfBirthDateTimePicker;
+        private ContactDateTimePicker DateOfBirthDateTimePicker;
     }
 }

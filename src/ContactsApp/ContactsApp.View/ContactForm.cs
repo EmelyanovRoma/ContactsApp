@@ -78,10 +78,11 @@ namespace ContactsApp.View
             try
             {
                 _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
+                DateOfBirthDateTimePicker.BackColor = Color.White;
             }
             catch
             {
-                
+                DateOfBirthDateTimePicker.BackColor = Color.LightPink;
             }
         }
 
