@@ -152,7 +152,7 @@ namespace ContactsApp.Model
                 if (value.Length > 50)
                 {
                     throw new ArgumentException(
-                        $"ID VK length must not exceed 100 characters.");
+                        $"ID VK length must not exceed 50 characters.");
                 }
                 _idVK = value;
             }
