@@ -37,7 +37,35 @@ namespace ContactsApp.View
         /// </summary>
         private void AddContact()
         {
-            _project.Contacts.Add(ContactFactory.GenerateRandom());
+            var contactForm = new ContactForm();
+
+            if (contactForm.ShowDialog() == DialogResult.OK)
+            {
+                var newContact = contactForm.Contact;
+
+                _project.Contacts.Add(newContact);
+                ContactsListBox.Items.Add(newContact.FullName);
+            }
+        }
+
+        /// <summary>
+        /// Метод изменения информации о контакте.
+        /// </summary>
+        private void EditContact(int index)
+        {
+            var contactForm = new ContactForm();
+            contactForm.Contact = (Contact)_project.Contacts[index].Clone();
+
+            if (contactForm.ShowDialog() == DialogResult.OK)
+            {               
+                var updatedContact = contactForm.Contact;
+
+                _project.Contacts.RemoveAt(index);
+                ContactsListBox.Items.RemoveAt(index);
+
+                _project.Contacts.Insert(index, updatedContact);
+                ContactsListBox.Items.Insert(index, updatedContact.FullName);
+            }
         }
 
         /// <summary>
@@ -48,7 +76,7 @@ namespace ContactsApp.View
         {
             if (index == -1)
                 return;
-
+            
             var message = MessageBox.Show(
                 "Do you really want to remove " + ContactsListBox.Items[index],
                 "Warning!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -90,6 +118,12 @@ namespace ContactsApp.View
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             AddContact();
+            UpdateListBox();
+        }
+
+        private void EditContactButton_Click(object sender, EventArgs e)
+        {
+            EditContact(ContactsListBox.SelectedIndex);
             UpdateListBox();
         }
 
@@ -138,12 +172,6 @@ namespace ContactsApp.View
         {
             AddContactButton.Image = Properties.Resources.add_contact_32x32_gray;
             AddContactButton.BackColor = Color.White;
-        }
-
-        private void EditContactButton_Click(object sender, EventArgs e)
-        {
-            var form = new ContactForm();
-            form.ShowDialog();
         }
 
         private void EditContactButton_MouseEnter(object sender, EventArgs e)

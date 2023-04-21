@@ -91,7 +91,6 @@
             AddPhotoButton.Size = new Size(32, 32);
             AddPhotoButton.TabIndex = 21;
             AddPhotoButton.TabStop = false;
-            AddPhotoButton.Click += AddPhotoButton_Click;
             AddPhotoButton.MouseEnter += AddPhotoButton_MouseEnter;
             AddPhotoButton.MouseLeave += AddPhotoButton_MouseLeave;
             // 
@@ -204,7 +203,6 @@
             // 
             // OKButton
             // 
-            OKButton.DialogResult = DialogResult.OK;
             OKButton.Location = new Point(357, 11);
             OKButton.Name = "OKButton";
             OKButton.Size = new Size(75, 23);
@@ -236,7 +234,7 @@
             MinimizeBox = false;
             Name = "ContactForm";
             ShowIcon = false;
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             InformationAboutContactPanel.ResumeLayout(false);
             InformationAboutContactPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)AddPhotoButton).EndInit();

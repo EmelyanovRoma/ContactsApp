@@ -1,5 +1,4 @@
 ﻿using ContactsApp.Model;
-using System.Text.RegularExpressions;
 
 namespace ContactsApp.View
 {
@@ -39,6 +38,29 @@ namespace ContactsApp.View
         private string _idVKError;
 
         /// <summary>
+        /// Возвращает или задает контакт.
+        /// </summary>
+        public Contact Contact
+        {
+            get
+            {
+                return _contact;
+            }
+            set
+            {
+                _contact = value;
+                if (_contact != null)
+                {
+                    FullNameTextBox.Text = _contact.FullName;
+                    EmailTextBox.Text = _contact.Email;
+                    PhoneNumberTextBox.Text = _contact.PhoneNumber;
+                    DateOfBirthDateTimePicker.Value = _contact.DateOfBirth;
+                    VKTextBox.Text = _contact.IDVK;
+                }
+            }
+        }
+
+        /// <summary>
         /// Конструктор формы для добавления и редактирования контакта.
         /// </summary>
         public ContactForm()
@@ -48,7 +70,7 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Обновление текстовых полей на форме.
+        /// Метод Обновление текстовых полей на форме.
         /// </summary>
         private void UpdateForm()
         {
@@ -59,6 +81,10 @@ namespace ContactsApp.View
             VKTextBox.Text = _contact.IDVK;
         }
 
+        /// <summary>
+        /// Метод передачи информации с текстовых полей формы 
+        /// в свойства объекта класса Contact.
+        /// </summary>
         private void UpdateContact()
         {
             _contact.FullName = FullNameTextBox.Text;
@@ -68,9 +94,13 @@ namespace ContactsApp.View
             _contact.IDVK = VKTextBox.Text;
         }
 
+        /// <summary>
+        /// Метод проверки текстовых полей на ошибки заполнения.
+        /// </summary>
+        /// <returns>false - есть ошибки; true- ошибок нет.</returns>
         private bool CheckFormsOnErrors()
         {
-            if (_fullNameError != "" || 
+            if (_fullNameError != "" ||
                 _emailError != "" ||
                 _phoneNumberError != "" ||
                 _dateOfBirthError != "" ||
@@ -186,11 +216,6 @@ namespace ContactsApp.View
             }
         }
 
-        private void AddPhotoButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
@@ -205,8 +230,10 @@ namespace ContactsApp.View
         {
             if (CheckFormsOnErrors())
             {
+                DialogResult = DialogResult.OK;
                 UpdateContact();
-            }           
+                this.Close();
+            }
         }
     }
 }
