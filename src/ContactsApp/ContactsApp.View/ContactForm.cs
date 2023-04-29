@@ -17,6 +17,9 @@ namespace ContactsApp.View
         /// </summary>
         private readonly Color ErrorBackColor = Color.LightPink;
 
+        /// <summary>
+        /// Словарь с ошибками в текстовых полях формы.
+        /// </summary>
         private Dictionary<string, string> _errorsDictionary = new Dictionary<string, string>
         {
             {nameof(Model.Contact.FullName), "" },
