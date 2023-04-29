@@ -8,34 +8,28 @@ namespace ContactsApp.View
     public partial class ContactForm : Form
     {
         /// <summary>
+        /// Цвет для текстовых полей, если нет ошибок.
+        /// </summary>
+        private readonly Color DefaultBackColor = Color.White;
+
+        /// <summary>
+        /// Цвет для текстовых полей, если есть ошибки.
+        /// </summary>
+        private readonly Color ErrorBackColor = Color.LightPink;
+
+        private Dictionary<string, string> _errorsDictionary = new Dictionary<string, string>
+        {
+            {nameof(Model.Contact.FullName), "" },
+            {nameof(Model.Contact.Email), "" },
+            {nameof(Model.Contact.PhoneNumber), "" },
+            {nameof(Model.Contact.DateOfBirth), "" },
+            {nameof(Model.Contact.IDVK), "" }
+        };
+
+        /// <summary>
         /// Объект класса <see cref="Contact"/>.
         /// </summary>
         private Contact _contact;
-
-        /// <summary>
-        /// Строковое поле с сообщением ошибки в полном имени.
-        /// </summary>
-        private string _fullNameError;
-
-        /// <summary>
-        /// Строковое поле с сообщением ошибки в электронной почте.
-        /// </summary>
-        private string _emailError;
-
-        /// <summary>
-        /// Строковое поле с сообщением ошибки в телефонном номере.
-        /// </summary>
-        private string _phoneNumberError;
-
-        /// <summary>
-        /// Строковое поле с сообщением ошибки в дате рождения.
-        /// </summary>
-        private string _dateOfBirthError;
-
-        /// <summary>
-        /// Строковое поле с сообщением ошибки в идентифиционном номере VK.
-        /// </summary>
-        private string _idVKError;
 
         /// <summary>
         /// Возвращает или задает контакт.
@@ -101,44 +95,21 @@ namespace ContactsApp.View
         /// <returns>false - есть ошибки; true- ошибок нет.</returns>
         private bool CheckFormsOnErrors()
         {
-            if (_fullNameError != "" ||
-                _emailError != "" ||
-                _phoneNumberError != "" ||
-                _dateOfBirthError != "" ||
-                _idVKError != "")
+            string allErrors = "";
+
+            foreach (var error in _errorsDictionary)
             {
-                if (_fullNameError != "")
+                if (error.Value != "")
                 {
-                    MessageBox.Show(
-                        _fullNameError, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    allErrors += error.Value + "\n";
                 }
-                if (_emailError != "")
-                {
-                    MessageBox.Show(
-                        _emailError, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                if (_phoneNumberError != "")
-                {
-                    MessageBox.Show(
-                        _phoneNumberError, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                if (_dateOfBirthError != "")
-                {
-                    MessageBox.Show(
-                        _dateOfBirthError, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                if (_idVKError != "")
-                {
-                    MessageBox.Show(
-                        _idVKError, "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                return false;
             }
+
+            if (allErrors != "")
+            {
+                MessageBox.Show(allErrors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }           
             return true;
         }
 
@@ -152,13 +123,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.FullName = FullNameTextBox.Text;
-                FullNameTextBox.BackColor = Color.White;
-                _fullNameError = "";
+                FullNameTextBox.BackColor = DefaultBackColor;
+                _errorsDictionary[nameof(Model.Contact.FullName)] = "";
             }
             catch (Exception exception)
             {
-                FullNameTextBox.BackColor = Color.LightPink;
-                _fullNameError = exception.Message;
+                FullNameTextBox.BackColor = ErrorBackColor;
+                _errorsDictionary[nameof(Model.Contact.FullName)] = exception.Message;
             }
         }
 
@@ -172,13 +143,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.Email = EmailTextBox.Text;
-                EmailTextBox.BackColor = Color.White;
-                _emailError = "";
+                EmailTextBox.BackColor = DefaultBackColor;
+                _errorsDictionary[nameof(Model.Contact.Email)] = "";
             }
             catch (Exception exception)
             {
-                EmailTextBox.BackColor = Color.LightPink;
-                _emailError = exception.Message;
+                EmailTextBox.BackColor = ErrorBackColor;
+                _errorsDictionary[nameof(Model.Contact.Email)] = exception.Message;
             }
         }
 
@@ -192,13 +163,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.PhoneNumber = PhoneNumberTextBox.Text;
-                PhoneNumberTextBox.BackColor = Color.White;
-                _phoneNumberError = "";
+                PhoneNumberTextBox.BackColor = DefaultBackColor;
+                _errorsDictionary[nameof(Model.Contact.PhoneNumber)] = "";
             }
             catch (Exception exception)
             {
-                PhoneNumberTextBox.BackColor = Color.LightPink;
-                _phoneNumberError = exception.Message;
+                PhoneNumberTextBox.BackColor = ErrorBackColor;
+                _errorsDictionary[nameof(Model.Contact.PhoneNumber)] = exception.Message;
             }
         }
 
@@ -212,13 +183,13 @@ namespace ContactsApp.View
             try
             {
                 _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
-                DateOfBirthDateTimePicker.BackColor = Color.White;
-                _dateOfBirthError = "";
+                DateOfBirthDateTimePicker.BackColor = DefaultBackColor;
+                _errorsDictionary[nameof(Model.Contact.DateOfBirth)] = "";
             }
             catch (Exception exception)
             {
-                DateOfBirthDateTimePicker.BackColor = Color.LightPink;
-                _dateOfBirthError = exception.Message;
+                DateOfBirthDateTimePicker.BackColor = ErrorBackColor;
+                _errorsDictionary[nameof(Model.Contact.DateOfBirth)] = exception.Message;
             }
         }
 
@@ -232,13 +203,28 @@ namespace ContactsApp.View
             try
             {
                 _contact.IDVK = VKTextBox.Text;
-                VKTextBox.BackColor = Color.White;
-                _idVKError = "";
+                VKTextBox.BackColor = DefaultBackColor;
+                _errorsDictionary[nameof(Model.Contact.IDVK)] = "";
             }
             catch (Exception exception)
             {
-                VKTextBox.BackColor = Color.LightPink;
-                _idVKError = exception.Message;
+                VKTextBox.BackColor = ErrorBackColor;
+                _errorsDictionary[nameof(Model.Contact.IDVK)] = exception.Message;
+            }
+        }
+
+        /// <summary>
+        /// Обработчик события нажатия на кнопку <see cref="OKButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            if (CheckFormsOnErrors())
+            {
+                DialogResult = DialogResult.OK;
+                UpdateContact();
+                this.Close();
             }
         }
 
@@ -260,21 +246,6 @@ namespace ContactsApp.View
         private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
-        }
-
-        /// <summary>
-        /// Обработчик события нажатия на кнопку <see cref="OKButton"/>.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OKButton_Click(object sender, EventArgs e)
-        {
-            if (CheckFormsOnErrors())
-            {
-                DialogResult = DialogResult.OK;
-                UpdateContact();
-                this.Close();
-            }
         }
     }
 }
