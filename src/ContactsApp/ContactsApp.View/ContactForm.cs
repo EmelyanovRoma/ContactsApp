@@ -10,7 +10,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Объект класса <see cref="Contact"/>.
         /// </summary>
-        private Contact _contact = ContactFactory.GenerateRandom();
+        private Contact _contact;
 
         /// <summary>
         /// Строковое поле с сообщением ошибки в полном имени.
@@ -61,11 +61,12 @@ namespace ContactsApp.View
         }
 
         /// <summary>
-        /// Конструктор формы для добавления и редактирования контакта.
+        /// Создает экземпляр <see cref="ContactForm"/>.
         /// </summary>
         public ContactForm()
         {
             InitializeComponent();
+            _contact = ContactFactory.GenerateRandom();
             UpdateForm();
         }
 
@@ -141,6 +142,11 @@ namespace ContactsApp.View
             return true;
         }
 
+        /// <summary>
+        /// Обработчик события изменения текста <see cref="FullNameTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -156,6 +162,11 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Обработчик события изменения текста <see cref="EmailTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EmailTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -171,6 +182,11 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Обработчик события изменения текста <see cref="PhoneNumberTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -186,6 +202,11 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Обработчик события изменения значения <see cref="DateOfBirthDateTimePicker"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DateOfBirthDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -201,6 +222,11 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Обработчик события изменения текста <see cref="VKTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VKTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -216,16 +242,31 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Обработчик события наведения указателя мыши на <see cref="AddPhotoButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
         }
 
+        /// <summary>
+        /// Обработчик события пропадания указателя мыши с <see cref="AddPhotoButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия на кнопку <see cref="OKButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OKButton_Click(object sender, EventArgs e)
         {
             if (CheckFormsOnErrors())
