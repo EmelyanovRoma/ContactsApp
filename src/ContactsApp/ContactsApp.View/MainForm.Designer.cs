@@ -169,6 +169,7 @@
             FindTextBox.Name = "FindTextBox";
             FindTextBox.Size = new Size(193, 23);
             FindTextBox.TabIndex = 1;
+            FindTextBox.TextChanged += FindTextBox_TextChanged;
             // 
             // ContactsListBox
             // 
@@ -176,7 +177,6 @@
             ContactsListBox.FormattingEnabled = true;
             ContactsListBox.IntegralHeight = false;
             ContactsListBox.ItemHeight = 15;
-            ContactsListBox.Items.AddRange(new object[] { "Абакумов Дмитрий", "Абалышев Михаил", "Балтабаев Егор", "Веденин Семен", "Виргунов Михаил", "Глазков Павел", "Голов Станислав" });
             ContactsListBox.Location = new Point(3, 32);
             ContactsListBox.Name = "ContactsListBox";
             ContactsListBox.Size = new Size(238, 379);
@@ -303,7 +303,6 @@
             PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             PhoneNumberTextBox.Size = new Size(181, 23);
             PhoneNumberTextBox.TabIndex = 6;
-            PhoneNumberTextBox.Text = "+7 (999) 111-22-33";
             PhoneNumberTextBox.KeyPress += PhoneNumberTextBox_KeyPress;
             // 
             // PhoneNumberLabel
@@ -323,7 +322,6 @@
             EmailTextBox.Name = "EmailTextBox";
             EmailTextBox.Size = new Size(426, 23);
             EmailTextBox.TabIndex = 4;
-            EmailTextBox.Text = "abakumov@no.mail";
             EmailTextBox.KeyPress += EmailTextBox_KeyPress;
             // 
             // EmailLabel
@@ -343,7 +341,6 @@
             FullNameTextBox.Name = "FullNameTextBox";
             FullNameTextBox.Size = new Size(426, 23);
             FullNameTextBox.TabIndex = 2;
-            FullNameTextBox.Text = "Абакумов Дмитрий Николаевич";
             FullNameTextBox.KeyPress += FullNameTextBox_KeyPress;
             // 
             // FullNameLabel

@@ -10,7 +10,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Объект класса <see cref="Contact"/>.
         /// </summary>
-        private Contact _contact = ContactFactory.GenerateRandom();
+        private Contact _contact;
 
         /// <summary>
         /// Строковое поле с сообщением ошибки в полном имени.
@@ -66,6 +66,7 @@ namespace ContactsApp.View
         public ContactForm()
         {
             InitializeComponent();
+            _contact = ContactFactory.GenerateRandom();
             UpdateForm();
         }
 
@@ -100,11 +101,11 @@ namespace ContactsApp.View
         /// <returns>false - есть ошибки; true- ошибок нет.</returns>
         private bool CheckFormsOnErrors()
         {
-            if (_fullNameError != "" ||
-                _emailError != "" ||
+            if (_fullNameError    != "" ||
+                _emailError       != "" ||
                 _phoneNumberError != "" ||
                 _dateOfBirthError != "" ||
-                _idVKError != "")
+                _idVKError        != "")
             {
                 if (_fullNameError != "")
                 {
@@ -216,6 +217,17 @@ namespace ContactsApp.View
             }
         }
 
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            if (CheckFormsOnErrors())
+            {
+                UpdateContact();
+
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
@@ -224,16 +236,6 @@ namespace ContactsApp.View
         private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
-        }
-
-        private void OKButton_Click(object sender, EventArgs e)
-        {
-            if (CheckFormsOnErrors())
-            {
-                DialogResult = DialogResult.OK;
-                UpdateContact();
-                this.Close();
-            }
-        }
+        }    
     }
 }
