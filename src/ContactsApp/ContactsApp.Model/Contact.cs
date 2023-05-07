@@ -11,7 +11,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Паттерн для проверки имени.
         /// </summary>
-        private const string _fullNameRegex = @"^[A-Яа-я][A-Яа-я]+\s[A-Яа-я][A-Яа-я]+$";
+        private const string _fullNameRegex = @"^[A-Яа-я]+\s?[A-Яа-я]*$";
 
         /// <summary>
         /// Паттерн для проверки номера телефона.

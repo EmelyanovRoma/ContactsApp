@@ -57,6 +57,7 @@ namespace ContactsApp.View
             if (contactForm.ShowDialog() == DialogResult.OK)
             {
                 var newContact = contactForm.Contact;
+
                 _project.Contacts.Add(newContact);
 
                 FindTextBox.Text = "";
@@ -167,6 +168,11 @@ namespace ContactsApp.View
             VKTextBox.Text = "";
         }
 
+        /// <summary>
+        /// Обработчик события нажантия на кнопку <see cref="AddContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             AddContact();
@@ -174,6 +180,11 @@ namespace ContactsApp.View
             UpdateListBox();
         }
 
+        /// <summary>
+        /// Обработчик события нажантия на кнопку <see cref="EditContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditContactButton_Click(object sender, EventArgs e)
         {
             EditContact(ContactsListBox.SelectedIndex);
@@ -181,6 +192,11 @@ namespace ContactsApp.View
             UpdateListBox();
         }
 
+        /// <summary>
+        /// Обработчик события нажантия на кнопку <see cref="RemoveContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
             RemoveContact(ContactsListBox.SelectedIndex);
@@ -188,6 +204,11 @@ namespace ContactsApp.View
             UpdateListBox();
         }
 
+        /// <summary>
+        /// Обработчик события изменения индекса <see cref="ContactsListBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ContactsListBox.SelectedIndex == -1)
@@ -222,6 +243,11 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки на форме <see cref="MainForm"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -231,67 +257,127 @@ namespace ContactsApp.View
             }
         }
 
+        /// <summary>
+        /// Обработчик события наведения указателя мыши на <see cref="AddContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddContactButton_MouseEnter(object sender, EventArgs e)
         {
             AddContactButton.Image = Properties.Resources.add_contact_32x32;
             AddContactButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
         }
 
+        /// <summary>
+        /// Обработчик события пропадания указателя мыши с <see cref="AddContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddContactButton_MouseLeave(object sender, EventArgs e)
         {
             AddContactButton.Image = Properties.Resources.add_contact_32x32_gray;
             AddContactButton.BackColor = Color.White;
         }
 
+        /// <summary>
+        /// Обработчик события наведения указателя мыши на <see cref="EditContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditContactButton_MouseEnter(object sender, EventArgs e)
         {
             EditContactButton.Image = Properties.Resources.edit_contact_32x32;
             EditContactButton.BackColor = ColorTranslator.FromHtml("#F5F5FF");
         }
 
+        /// <summary>
+        /// Обработчик события пропадания указателя мыши с <see cref="EditContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EditContactButton_MouseLeave(object sender, EventArgs e)
         {
             EditContactButton.Image = Properties.Resources.edit_contact_32x32_gray;
             EditContactButton.BackColor = Color.White;
         }
 
+        /// <summary>
+        /// Обработчик события наведения указателя мыши на <see cref="RemoveContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveContactButton_MouseEnter(object sender, EventArgs e)
         {
             RemoveContactButton.Image = Properties.Resources.remove_contact_32x32;
             RemoveContactButton.BackColor = ColorTranslator.FromHtml("#FAF5F5");
         }
 
+        /// <summary>
+        /// Обработчик события пропадания указателя мыши с <see cref="RemoveContactButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveContactButton_MouseLeave(object sender, EventArgs e)
         {
             RemoveContactButton.Image = Properties.Resources.remove_contact_32x32_gray;
             RemoveContactButton.BackColor = Color.White;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки клавиатуры в <see cref="FullNameTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки клавиатуры в <see cref="EmailTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EmailTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки клавиатуры в <see cref="PhoneNumberTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PhoneNumberTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки клавиатуры в <see cref="DateOfBirthTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DateOfBirthTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки клавиатуры в <see cref="VKTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VKTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Обработчик события нажатия кнопки <see cref="BirthdayPanelCloseButton"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
         {
             BirthdayPanel.Visible = false;

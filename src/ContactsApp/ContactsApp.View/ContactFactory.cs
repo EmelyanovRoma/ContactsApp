@@ -47,7 +47,7 @@ namespace ContactsApp.View
             };
 
             Random random = new Random();
-            int index = random.Next(0, 4);
+            int index = random.Next(0, 5);
             return new Contact(fullNames[index], emails[index], 
                 phoneNumbers[index], DateTime.Today, idVK[index]);
         }
