@@ -236,9 +236,9 @@
             BirthdaySurnamesLabel.ForeColor = Color.FromArgb(0, 144, 255);
             BirthdaySurnamesLabel.Location = new Point(68, 39);
             BirthdaySurnamesLabel.Name = "BirthdaySurnamesLabel";
-            BirthdaySurnamesLabel.Size = new Size(192, 15);
+            BirthdaySurnamesLabel.Size = new Size(332, 15);
             BirthdaySurnamesLabel.TabIndex = 2;
-            BirthdaySurnamesLabel.Text = "Абакумов, Петров, Иванов и др.";
+            BirthdaySurnamesLabel.Text = "Сидоров Александр, Иванов Иван, Миронов Игорь и др.";
             // 
             // TodayIsBirthdayOfLabel
             // 

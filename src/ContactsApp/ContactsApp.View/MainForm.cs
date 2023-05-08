@@ -18,11 +18,12 @@ namespace ContactsApp.View
         private List<Contact> _currentContacts = new List<Contact>();
 
         /// <summary>
-        /// Конструктор главной формы.
+        /// Создает экземпляр <see cref="MainForm"/>.
         /// </summary>
         public MainForm()
         {
             InitializeComponent();
+            UpdateBirthdatPanel();
         }
 
         /// <summary>
@@ -43,8 +44,47 @@ namespace ContactsApp.View
                 for (int i = 0; i < _currentContacts.Count; i++)
                 {
                     ContactsListBox.Items.Add(_currentContacts[i].FullName);
-                }              
-            }            
+                }
+            }
+        }
+
+        /// <summary>
+        /// Метод для обновления строки с именниниками
+        /// </summary>
+        private void UpdateBirthdatPanel()
+        {            
+            int maxCountOfDisplayedContacts = 3;
+            var birthdayContacts = _project.SearchBirthdayContacts();
+            BirthdaySurnamesLabel.Text = "";
+
+            if (birthdayContacts.Count > maxCountOfDisplayedContacts)
+            {
+                for (int i = 0; i < maxCountOfDisplayedContacts; i++)
+                {
+                    if (i != maxCountOfDisplayedContacts - 1)
+                    {
+                        BirthdaySurnamesLabel.Text += birthdayContacts[i].FullName + ", ";
+                    }
+                    else
+                    {
+                        BirthdaySurnamesLabel.Text += birthdayContacts[i].FullName + " и др.";
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < birthdayContacts.Count; i++)
+                {
+                    if (i != birthdayContacts.Count - 1)
+                    {
+                        BirthdaySurnamesLabel.Text += birthdayContacts[i].FullName + ", ";
+                    }
+                    else
+                    {
+                        BirthdaySurnamesLabel.Text += birthdayContacts[i].FullName + ".";
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -57,7 +97,6 @@ namespace ContactsApp.View
             if (contactForm.ShowDialog() == DialogResult.OK)
             {
                 var newContact = contactForm.Contact;
-
                 _project.Contacts.Add(newContact);
 
                 FindTextBox.Text = "";
@@ -79,11 +118,11 @@ namespace ContactsApp.View
             {
                 var indexOfCurrentContact =
                         _project.Contacts.IndexOf(_currentContacts[index]);
-            
-                contactForm.Contact = 
+
+                contactForm.Contact =
                     (Contact)_project.Contacts[indexOfCurrentContact].Clone();
             }
-            
+
 
             if (contactForm.ShowDialog() == DialogResult.OK)
             {
@@ -92,11 +131,11 @@ namespace ContactsApp.View
                 if (FindTextBox.Text == "")
                 {
                     _project.Contacts.RemoveAt(index);
-                    _project.Contacts.Insert(index, updatedContact);                   
+                    _project.Contacts.Insert(index, updatedContact);
                 }
                 else
                 {
-                    _project.Contacts.Remove(_currentContacts[index]);                    
+                    _project.Contacts.Remove(_currentContacts[index]);
                     _project.Contacts.Insert(index, updatedContact);
 
                     _currentContacts.RemoveAt(index);
@@ -122,7 +161,7 @@ namespace ContactsApp.View
             {
                 if (FindTextBox.Text == "")
                 {
-                    _project.Contacts.RemoveAt(index);                 
+                    _project.Contacts.RemoveAt(index);
                 }
                 else
                 {
@@ -133,8 +172,8 @@ namespace ContactsApp.View
                     {
                         FindTextBox.Text = "";
                     }
-                }         
-            }           
+                }
+            }
         }
 
         /// <summary>
@@ -178,6 +217,7 @@ namespace ContactsApp.View
             AddContact();
             _project.SortByName();
             UpdateListBox();
+            UpdateBirthdatPanel();
         }
 
         /// <summary>
@@ -190,6 +230,7 @@ namespace ContactsApp.View
             EditContact(ContactsListBox.SelectedIndex);
             _project.SortByName();
             UpdateListBox();
+            UpdateBirthdatPanel();
         }
 
         /// <summary>
@@ -202,6 +243,7 @@ namespace ContactsApp.View
             RemoveContact(ContactsListBox.SelectedIndex);
             _project.SortByName();
             UpdateListBox();
+            UpdateBirthdatPanel();
         }
 
         /// <summary>
@@ -217,6 +259,11 @@ namespace ContactsApp.View
                 UpdateSelectedContact(ContactsListBox.SelectedIndex);
         }
 
+        /// <summary>
+        /// Обработчик события изменения текста <see cref="FindTextBox"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
             if (FindTextBox.Text == "")
@@ -225,12 +272,17 @@ namespace ContactsApp.View
             }
             else
             {
-                _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);         
+                _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
             }
 
             UpdateListBox();
         }
 
+        /// <summary>
+        /// Обработчик события закрывания <see cref="MainForm"/>.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             var message = MessageBox.Show(
@@ -381,6 +433,6 @@ namespace ContactsApp.View
         private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
         {
             BirthdayPanel.Visible = false;
-        }    
+        }
     }
 }
