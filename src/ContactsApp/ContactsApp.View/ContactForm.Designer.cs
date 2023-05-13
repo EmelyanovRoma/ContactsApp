@@ -81,6 +81,7 @@
             DateOfBirthDateTimePicker.Size = new Size(181, 23);
             DateOfBirthDateTimePicker.TabIndex = 22;
             DateOfBirthDateTimePicker.TextColor = Color.Black;
+            DateOfBirthDateTimePicker.Value = new DateTime(2023, 5, 13, 0, 0, 0, 0);
             DateOfBirthDateTimePicker.ValueChanged += DateOfBirthDateTimePicker_ValueChanged;
             // 
             // AddPhotoButton
