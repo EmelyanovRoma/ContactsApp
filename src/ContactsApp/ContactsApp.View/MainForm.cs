@@ -15,7 +15,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Список контактов, отображаемых в списке контактов при поиске по подстроке.
         /// </summary>
-        private List<Contact> _currentContacts;
+        private List<Contact> _currentContacts = new List<Contact>();
 
         /// <summary>
         /// Создает экземпляр <see cref="MainForm"/>.
@@ -23,7 +23,6 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
-            _currentContacts = _project.Contacts;
             UpdateBirthdaySurnamesLabel();           
         }
 
@@ -89,6 +88,7 @@ namespace ContactsApp.View
             {
                 var newContact = contactForm.Contact;
                 _project.Contacts.Add(newContact);
+                _currentContacts = _project.Contacts;
 
                 FindTextBox.Text = "";
             }
@@ -113,9 +113,7 @@ namespace ContactsApp.View
 
                 _project.Contacts.Remove(_currentContacts[index]);
                 _project.Contacts.Insert(index, updatedContact);
-
-                _currentContacts.RemoveAt(index);
-                _currentContacts.Insert(index, updatedContact);
+                _currentContacts = _project.Contacts;
             }
         }
 
@@ -135,7 +133,7 @@ namespace ContactsApp.View
             if (message == DialogResult.OK)
             {
                 _project.Contacts.Remove(_currentContacts[index]);
-                _currentContacts.RemoveAt(index);
+                _currentContacts = _project.Contacts;
 
                 if (_currentContacts.Count == 0)
                 {
@@ -208,6 +206,7 @@ namespace ContactsApp.View
         {
             RemoveContact(ContactsListBox.SelectedIndex);
             _project.SortByName();
+            _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
         }
