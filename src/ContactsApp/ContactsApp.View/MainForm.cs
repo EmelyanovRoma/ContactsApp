@@ -15,7 +15,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Список контактов, отображаемых в списке контактов при поиске по подстроке.
         /// </summary>
-        private List<Contact> _currentContacts = new List<Contact>();
+        private List<Contact> _currentContacts;
 
         /// <summary>
         /// Создает экземпляр <see cref="MainForm"/>.
@@ -23,7 +23,8 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
-            UpdateBirthdatPanel();
+            _currentContacts = _project.Contacts;
+            UpdateBirthdaySurnamesLabel();           
         }
 
         /// <summary>
@@ -32,26 +33,16 @@ namespace ContactsApp.View
         private void UpdateListBox()
         {
             ContactsListBox.Items.Clear();
-            if (FindTextBox.Text == "")
+            for (int i = 0; i < _currentContacts.Count; i++)
             {
-                for (int i = 0; i < _project.Contacts.Count; i++)
-                {
-                    ContactsListBox.Items.Add(_project.Contacts[i].FullName);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < _currentContacts.Count; i++)
-                {
-                    ContactsListBox.Items.Add(_currentContacts[i].FullName);
-                }
+                ContactsListBox.Items.Add(_currentContacts[i].FullName);
             }
         }
 
         /// <summary>
         /// Метод для обновления строки с именниниками
         /// </summary>
-        private void UpdateBirthdatPanel()
+        private void UpdateBirthdaySurnamesLabel()
         {            
             int maxCountOfDisplayedContacts = 3;
             var birthdayContacts = _project.SearchBirthdayContacts();
@@ -109,38 +100,22 @@ namespace ContactsApp.View
         private void EditContact(int index)
         {
             var contactForm = new ContactForm();
-
-            if (FindTextBox.Text == "")
-            {
-                contactForm.Contact = (Contact)_project.Contacts[index].Clone();
-            }
-            else
-            {
-                var indexOfCurrentContact =
+            var indexOfCurrentContact =
                         _project.Contacts.IndexOf(_currentContacts[index]);
 
-                contactForm.Contact =
-                    (Contact)_project.Contacts[indexOfCurrentContact].Clone();
-            }
+            contactForm.Contact =
+                (Contact)_project.Contacts[indexOfCurrentContact].Clone();
 
 
             if (contactForm.ShowDialog() == DialogResult.OK)
             {
                 var updatedContact = contactForm.Contact;
 
-                if (FindTextBox.Text == "")
-                {
-                    _project.Contacts.RemoveAt(index);
-                    _project.Contacts.Insert(index, updatedContact);
-                }
-                else
-                {
-                    _project.Contacts.Remove(_currentContacts[index]);
-                    _project.Contacts.Insert(index, updatedContact);
+                _project.Contacts.Remove(_currentContacts[index]);
+                _project.Contacts.Insert(index, updatedContact);
 
-                    _currentContacts.RemoveAt(index);
-                    _currentContacts.Insert(index, updatedContact);
-                }
+                _currentContacts.RemoveAt(index);
+                _currentContacts.Insert(index, updatedContact);
             }
         }
 
@@ -159,19 +134,12 @@ namespace ContactsApp.View
 
             if (message == DialogResult.OK)
             {
-                if (FindTextBox.Text == "")
-                {
-                    _project.Contacts.RemoveAt(index);
-                }
-                else
-                {
-                    _project.Contacts.Remove(_currentContacts[index]);
-                    _currentContacts.RemoveAt(index);
+                _project.Contacts.Remove(_currentContacts[index]);
+                _currentContacts.RemoveAt(index);
 
-                    if (_currentContacts.Count == 0)
-                    {
-                        FindTextBox.Text = "";
-                    }
+                if (_currentContacts.Count == 0)
+                {
+                    FindTextBox.Text = "";
                 }
             }
         }
@@ -182,11 +150,7 @@ namespace ContactsApp.View
         /// <param name="index"></param>
         private void UpdateSelectedContact(int index)
         {
-            Contact selectedContact;
-            if (FindTextBox.Text == "")
-                selectedContact = _project.Contacts[index];
-            else
-                selectedContact = _currentContacts[index];
+            var selectedContact = _currentContacts[index];
 
             FullNameTextBox.Text = selectedContact.FullName;
             EmailTextBox.Text = selectedContact.Email;
@@ -216,8 +180,9 @@ namespace ContactsApp.View
         {
             AddContact();
             _project.SortByName();
+            _currentContacts = _project.Contacts;
             UpdateListBox();
-            UpdateBirthdatPanel();
+            UpdateBirthdaySurnamesLabel();
         }
 
         /// <summary>
@@ -229,8 +194,9 @@ namespace ContactsApp.View
         {
             EditContact(ContactsListBox.SelectedIndex);
             _project.SortByName();
+            _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
             UpdateListBox();
-            UpdateBirthdatPanel();
+            UpdateBirthdaySurnamesLabel();
         }
 
         /// <summary>
@@ -243,7 +209,7 @@ namespace ContactsApp.View
             RemoveContact(ContactsListBox.SelectedIndex);
             _project.SortByName();
             UpdateListBox();
-            UpdateBirthdatPanel();
+            UpdateBirthdaySurnamesLabel();
         }
 
         /// <summary>
@@ -265,16 +231,8 @@ namespace ContactsApp.View
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FindTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (FindTextBox.Text == "")
-            {
-                _currentContacts.Clear();
-            }
-            else
-            {
-                _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
-            }
-
+        {   
+            _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
             UpdateListBox();
         }
 

@@ -52,6 +52,11 @@
         /// <returns>Список найденных контактов по подстроке.</returns>
         public List<Contact> SearchContactsBySubstring(string substring)
         {
+            if (substring == "")
+            {
+                return Contacts;
+            }
+
             List<Contact> contacts = new List<Contact>();
             for (int i = 0; i < Contacts.Count; i++)
             {
