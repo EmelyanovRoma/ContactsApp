@@ -8,9 +8,14 @@ namespace ContactsApp.View
     public partial class MainForm : Form
     {
         /// <summary>
+        /// Объект класса <see cref="ProjectSerializer"/>.
+        /// </summary>
+        private ProjectSerializer _projectSerializer = new ProjectSerializer();
+
+        /// <summary>
         /// Объект класса <see cref="Project"/>.
         /// </summary>
-        private Project _project = new Project(new List<Contact>());
+        private Project _project;
 
         /// <summary>
         /// Список контактов, отображаемых в списке контактов при поиске по подстроке.
@@ -23,7 +28,9 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
-            UpdateBirthdaySurnamesLabel();           
+            _project = _projectSerializer.LoadFromFile();
+            UpdateListBox();
+            UpdateBirthdaySurnamesLabel();
         }
 
         /// <summary>
@@ -106,7 +113,6 @@ namespace ContactsApp.View
             contactForm.Contact =
                 (Contact)_project.Contacts[indexOfCurrentContact].Clone();
 
-
             if (contactForm.ShowDialog() == DialogResult.OK)
             {
                 var updatedContact = contactForm.Contact;
@@ -179,8 +185,10 @@ namespace ContactsApp.View
             AddContact();
             _project.SortByName();
             _currentContacts = _project.Contacts;
+            _project.SortContactsByName();
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -195,6 +203,7 @@ namespace ContactsApp.View
             _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -207,8 +216,10 @@ namespace ContactsApp.View
             RemoveContact(ContactsListBox.SelectedIndex);
             _project.SortByName();
             _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
+            _project.SortContactsByName();
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
