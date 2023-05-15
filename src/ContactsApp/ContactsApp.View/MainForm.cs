@@ -8,9 +8,14 @@ namespace ContactsApp.View
     public partial class MainForm : Form
     {
         /// <summary>
+        /// Объект класса <see cref="ProjectSerializer"/>.
+        /// </summary>
+        private ProjectSerializer _projectSerializer = new ProjectSerializer();
+
+        /// <summary>
         /// Объект класса <see cref="Project"/>.
         /// </summary>
-        private Project _project = new Project(new List<Contact>());
+        private Project _project;
 
         /// <summary>
         /// Список контактов, отображаемых в списке контактов при поиске по подстроке.
@@ -23,7 +28,9 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
-            UpdateBirthdatPanel();
+            _project = _projectSerializer.LoadFromFile();
+            UpdateListBox();
+            UpdateBirthdaySurnamesLabel();
         }
 
         /// <summary>
@@ -51,7 +58,7 @@ namespace ContactsApp.View
         /// <summary>
         /// Метод для обновления строки с именниниками
         /// </summary>
-        private void UpdateBirthdatPanel()
+        private void UpdateBirthdaySurnamesLabel()
         {            
             int maxCountOfDisplayedContacts = 3;
             var birthdayContacts = _project.SearchBirthdayContacts();
@@ -122,7 +129,6 @@ namespace ContactsApp.View
                 contactForm.Contact =
                     (Contact)_project.Contacts[indexOfCurrentContact].Clone();
             }
-
 
             if (contactForm.ShowDialog() == DialogResult.OK)
             {
@@ -215,9 +221,10 @@ namespace ContactsApp.View
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             AddContact();
-            _project.SortByName();
+            _project.SortContactsByName();
             UpdateListBox();
-            UpdateBirthdatPanel();
+            UpdateBirthdaySurnamesLabel();
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -228,9 +235,10 @@ namespace ContactsApp.View
         private void EditContactButton_Click(object sender, EventArgs e)
         {
             EditContact(ContactsListBox.SelectedIndex);
-            _project.SortByName();
+            _project.SortContactsByName();
             UpdateListBox();
-            UpdateBirthdatPanel();
+            UpdateBirthdaySurnamesLabel();
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -241,9 +249,10 @@ namespace ContactsApp.View
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
             RemoveContact(ContactsListBox.SelectedIndex);
-            _project.SortByName();
+            _project.SortContactsByName();
             UpdateListBox();
-            UpdateBirthdatPanel();
+            UpdateBirthdaySurnamesLabel();
+            _projectSerializer.SaveToFile(_project);
         }
 
         /// <summary>

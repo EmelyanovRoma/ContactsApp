@@ -48,11 +48,7 @@ namespace ContactsApp.View
                 _contact = value;
                 if (_contact != null)
                 {
-                    FullNameTextBox.Text = _contact.FullName;
-                    EmailTextBox.Text = _contact.Email;
-                    PhoneNumberTextBox.Text = _contact.PhoneNumber;
-                    DateOfBirthDateTimePicker.Value = _contact.DateOfBirth;
-                    VKTextBox.Text = _contact.IDVK;
+                    UpdateForm();
                 }
             }
         }
@@ -75,7 +71,7 @@ namespace ContactsApp.View
             FullNameTextBox.Text = _contact.FullName;
             EmailTextBox.Text = _contact.Email;
             PhoneNumberTextBox.Text = _contact.PhoneNumber;
-            DateOfBirthDateTimePicker.Text = _contact.DateOfBirth.ToString();
+            DateOfBirthDateTimePicker.Value = _contact.DateOfBirth;
             VKTextBox.Text = _contact.IDVK;
         }
 

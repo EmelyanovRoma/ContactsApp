@@ -13,16 +13,15 @@
         /// <summary>
         /// Создает экземпляр <see cref="Project"/>.
         /// </summary>
-        /// <param name="contacts">Список контактов.</param>
-        public Project(List<Contact> contacts)
+        public Project()
         {
-            Contacts = contacts;
+            Contacts = new List<Contact>();
         }
 
         /// <summary>
         /// Сортировка списка контактов по имени в алфавитном порядке.
         /// </summary>
-        public void SortByName()
+        public void SortContactsByName()
         {
             Contacts = Contacts.OrderBy(contact => contact.FullName).ToList();
         }
