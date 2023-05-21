@@ -176,6 +176,11 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public Contact() { }
+
+        /// <summary>
         /// Клонирует существующий экземпляр <see cref="Contact"/>.
         /// </summary>
         /// <returns>Возвращает новый экземпляр <see cref="Contact"/>.</returns>

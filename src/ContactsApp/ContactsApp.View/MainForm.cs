@@ -29,6 +29,7 @@ namespace ContactsApp.View
         {
             InitializeComponent();
             _project = _projectSerializer.LoadFromFile();
+            _currentContacts = _project.Contacts;
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
         }
@@ -183,7 +184,6 @@ namespace ContactsApp.View
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             AddContact();
-            _project.SortByName();
             _currentContacts = _project.Contacts;
             _project.SortContactsByName();
             UpdateListBox();
@@ -199,7 +199,6 @@ namespace ContactsApp.View
         private void EditContactButton_Click(object sender, EventArgs e)
         {
             EditContact(ContactsListBox.SelectedIndex);
-            _project.SortByName();
             _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
@@ -214,7 +213,6 @@ namespace ContactsApp.View
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
             RemoveContact(ContactsListBox.SelectedIndex);
-            _project.SortByName();
             _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
             _project.SortContactsByName();
             UpdateListBox();
