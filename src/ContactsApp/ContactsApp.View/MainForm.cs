@@ -106,6 +106,9 @@ namespace ContactsApp.View
         /// </summary>
         private void EditContact(int index)
         {
+            if (index == -1)
+                return;
+
             var contactForm = new ContactForm();
             var indexOfCurrentContact =
                         _project.Contacts.IndexOf(_currentContacts[index]);
@@ -197,10 +200,10 @@ namespace ContactsApp.View
         {
             EditContact(ContactsListBox.SelectedIndex);
             _project.SortContactsByFullName();
-            _currentContacts = _project.Contacts;
             _currentContacts = _project.FindContactsBySubstring(FindTextBox.Text);
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
+            ClearSelectedContact();
             _projectSerializer.SaveToFile(_project);
         }
 
@@ -213,10 +216,10 @@ namespace ContactsApp.View
         {
             RemoveContact(ContactsListBox.SelectedIndex);
             _project.SortContactsByFullName();
-            _currentContacts = _project.Contacts;
             _currentContacts = _project.FindContactsBySubstring(FindTextBox.Text);           
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
+            ClearSelectedContact();
             _projectSerializer.SaveToFile(_project);
         }
 
