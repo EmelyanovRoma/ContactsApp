@@ -21,7 +21,7 @@
         /// <summary>
         /// Сортировка списка контактов по имени в алфавитном порядке.
         /// </summary>
-        public void SortContactsByName()
+        public void SortContactsByFullName()
         {
             Contacts = Contacts.OrderBy(contact => contact.FullName).ToList();
         }
@@ -30,7 +30,7 @@
         /// Поиск именинников в списке контактов.
         /// </summary>
         /// <returns>Список именинников</returns>
-        public List<Contact> SearchBirthdayContacts()
+        public List<Contact> FindBirthdayContacts()
         {
             List<Contact> contacts = new List<Contact>();
             for (int i = 0; i < Contacts.Count; i++)
@@ -49,7 +49,7 @@
         /// </summary>
         /// <param name="substring">Подстрока для поиска.</param>
         /// <returns>Список найденных контактов по подстроке.</returns>
-        public List<Contact> SearchContactsBySubstring(string substring)
+        public List<Contact> FindContactsBySubstring(string substring)
         {
             if (substring == "")
             {

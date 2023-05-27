@@ -52,7 +52,7 @@ namespace ContactsApp.View
         private void UpdateBirthdaySurnamesLabel()
         {            
             int maxCountOfDisplayedContacts = 3;
-            var birthdayContacts = _project.SearchBirthdayContacts();
+            var birthdayContacts = _project.FindBirthdayContacts();
             BirthdaySurnamesLabel.Text = "";
 
             if (birthdayContacts.Count > maxCountOfDisplayedContacts)
@@ -96,7 +96,6 @@ namespace ContactsApp.View
             {
                 var newContact = contactForm.Contact;
                 _project.Contacts.Add(newContact);
-                _currentContacts = _project.Contacts;
 
                 FindTextBox.Text = "";
             }
@@ -120,7 +119,6 @@ namespace ContactsApp.View
 
                 _project.Contacts.Remove(_currentContacts[index]);
                 _project.Contacts.Insert(index, updatedContact);
-                _currentContacts = _project.Contacts;
             }
         }
 
@@ -140,7 +138,6 @@ namespace ContactsApp.View
             if (message == DialogResult.OK)
             {
                 _project.Contacts.Remove(_currentContacts[index]);
-                _currentContacts = _project.Contacts;
 
                 if (_currentContacts.Count == 0)
                 {
@@ -184,8 +181,8 @@ namespace ContactsApp.View
         private void AddContactButton_Click(object sender, EventArgs e)
         {
             AddContact();
+            _project.SortContactsByFullName();
             _currentContacts = _project.Contacts;
-            _project.SortContactsByName();
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
             _projectSerializer.SaveToFile(_project);
@@ -199,7 +196,9 @@ namespace ContactsApp.View
         private void EditContactButton_Click(object sender, EventArgs e)
         {
             EditContact(ContactsListBox.SelectedIndex);
-            _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
+            _project.SortContactsByFullName();
+            _currentContacts = _project.Contacts;
+            _currentContacts = _project.FindContactsBySubstring(FindTextBox.Text);
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
             _projectSerializer.SaveToFile(_project);
@@ -213,8 +212,9 @@ namespace ContactsApp.View
         private void RemoveContactButton_Click(object sender, EventArgs e)
         {
             RemoveContact(ContactsListBox.SelectedIndex);
-            _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
-            _project.SortContactsByName();
+            _project.SortContactsByFullName();
+            _currentContacts = _project.Contacts;
+            _currentContacts = _project.FindContactsBySubstring(FindTextBox.Text);           
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
             _projectSerializer.SaveToFile(_project);
@@ -240,7 +240,7 @@ namespace ContactsApp.View
         /// <param name="e"></param>
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {   
-            _currentContacts = _project.SearchContactsBySubstring(FindTextBox.Text);
+            _currentContacts = _project.FindContactsBySubstring(FindTextBox.Text);
             UpdateListBox();
         }
 
@@ -258,6 +258,10 @@ namespace ContactsApp.View
             if (message == DialogResult.Cancel)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                _projectSerializer.SaveToFile(_project);
             }
         }
 

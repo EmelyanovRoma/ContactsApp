@@ -44,6 +44,7 @@ namespace ContactsApp.Model
 
             if (!File.Exists(SaveFilePath))
             {
+                Directory.CreateDirectory(_contactAppFolderPath);
                 File.Create(SaveFilePath).Close();
             }
 
