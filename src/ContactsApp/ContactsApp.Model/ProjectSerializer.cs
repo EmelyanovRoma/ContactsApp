@@ -42,9 +42,13 @@ namespace ContactsApp.Model
         {
             JsonSerializer serializer = new();
 
-            if (!File.Exists(SaveFilePath))
+            if (!Directory.Exists(_contactAppFolderPath)) 
             {
                 Directory.CreateDirectory(_contactAppFolderPath);
+            }
+
+            if (!File.Exists(SaveFilePath))
+            {              
                 File.Create(SaveFilePath).Close();
             }
 
