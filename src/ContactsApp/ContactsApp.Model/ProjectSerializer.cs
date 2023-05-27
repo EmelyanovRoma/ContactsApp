@@ -26,6 +26,15 @@ namespace ContactsApp.Model
             _contactAppFolderPath + "\\userdata.json";
 
         /// <summary>
+        /// Возвращает путь до папки, содержащей файл со списком контактов.
+        /// </summary>
+        public string ContactAppFolderPath
+        {
+            get { return _contactAppFolderPath; }
+            set { _contactAppFolderPath = value; }
+        }
+
+        /// <summary>
         /// Возвращает путь до файла со списком контактов.
         /// </summary>
         public string SaveFilePath 
@@ -42,9 +51,9 @@ namespace ContactsApp.Model
         {
             JsonSerializer serializer = new();
 
-            if (!Directory.Exists(_contactAppFolderPath)) 
+            if (!Directory.Exists(ContactAppFolderPath)) 
             {
-                Directory.CreateDirectory(_contactAppFolderPath);
+                Directory.CreateDirectory(ContactAppFolderPath);
             }
 
             if (!File.Exists(SaveFilePath))
