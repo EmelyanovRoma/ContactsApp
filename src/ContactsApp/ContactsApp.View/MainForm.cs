@@ -188,6 +188,7 @@ namespace ContactsApp.View
             _currentContacts = _project.Contacts;
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
+            ClearSelectedContact();
             _projectSerializer.SaveToFile(_project);
         }
 
