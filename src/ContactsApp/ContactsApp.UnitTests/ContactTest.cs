@@ -13,7 +13,12 @@ namespace ContactsApp.UnitTests
             "very very very very long full name", 
             "An exception should be thrown if full name length is more than 100 characters", 
             TestName = "Assigning a string greater than 100 characters to a full name")]
-        public void Fullname_SetUncorrectValue_ArgumentException(string wrongFullname, string message)
+        [TestCase("Ив4нов И1ан",
+            "An exception should be thrown if full name contains numbers or other characters " +
+            "other than these: А-Я, а-я",
+            TestName = "Assigning a string contains other symbols than these: А-Я, а-я")]
+        public void Fullname_SetUncorrectValue_ThrowsArgumentException(
+            string wrongFullname, string message)
         {
             // Arrange
             var contact = new Contact();
@@ -44,7 +49,7 @@ namespace ContactsApp.UnitTests
         }
 
         [Test(Description = "Negative email setter test")]
-        public void Email_SetUncorrectValue_ArgumentException()
+        public void Email_SetUncorrectValue_ThrowsArgumentException()
         {
             // Arrange
             var contact = new Contact();
@@ -79,7 +84,7 @@ namespace ContactsApp.UnitTests
         }
 
         [Test(Description = "Negative phone number setter test")]
-        public void PhoneNumber_SetUncorrectValue_ArgumentException()
+        public void PhoneNumber_SetLettersInPhoneNumber_ThrowsArgumentException()
         {
             // Arrange
             var contact = new Contact();
@@ -113,11 +118,11 @@ namespace ContactsApp.UnitTests
         }
 
         [Test(Description = "Negative date of birth setter test")]
-        public void DateOfBirth_SetDateTimeNow_ArgumentException()
+        public void DateOfBirth_SetDateTimeGreaterThanNow_ThrowsArgumentException()
         {
             // Arrange
             var contact = new Contact();
-            var wrongDateOfBirth = DateTime.Now;
+            var wrongDateOfBirth = DateTime.Now.AddDays(1);
             var message = "An exception should be thrown if the date " +
                 "of birth is greater than now date";
 
@@ -131,7 +136,7 @@ namespace ContactsApp.UnitTests
         }
 
         [Test(Description = "Negative date of birth setter test")]
-        public void DateOfBirth_SetDateTimeLower1900Year_ArgumentException()
+        public void DateOfBirth_SetDateTimeLower1900Year_ThrowsArgumentException()
         {
             // Arrange
             var contact = new Contact();
@@ -165,7 +170,7 @@ namespace ContactsApp.UnitTests
         }
 
         [Test(Description = "Negative vk id setter test")]
-        public void IDVK_SetUncorrectValue_ArgumentException()
+        public void IDVK_SetStringGreaterThan50Symbols_ThrowsArgumentException()
         {
             // Arrange
             var contact = new Contact();
@@ -178,7 +183,7 @@ namespace ContactsApp.UnitTests
             Assert.Throws<ArgumentException>( () => 
             {
                 // Act
-                contact.IDVK = wrongIDVK;
+                contact.IdVk = wrongIDVK;
             },
             message);
         }
@@ -192,20 +197,20 @@ namespace ContactsApp.UnitTests
             var expected = correctIDVK;
 
             // Act
-            contact.IDVK = correctIDVK;
-            var actual = contact.IDVK;  
+            contact.IdVk = correctIDVK;
+            var actual = contact.IdVk;  
 
             // Assert
             Assert.AreEqual(expected, actual);
         }
 
-        [Test(Description = "Negative contact contructor test")]
-        public void Constructor_CreationWithUncorrectParametr_ArgumentException()
+        [Test(Description = "Negative contact contructor test with uncorrect full name")]
+        public void Constructor_CreationWithUncorrectFullname_ThrowsArgumentException()
         {
             // Arrange
             var wrongFullname = "This is a very very very very very very very very " +
                 "very very very very very very very very long full name";
-            var message = "An exception should be thrown if the argument of " +
+            var message = "An exception should be thrown if the full name of " +
                 "constructor is uncorrect";
 
             // Assert
@@ -214,6 +219,80 @@ namespace ContactsApp.UnitTests
                 // Act
                 new Contact(wrongFullname, "1@no.mail", "+79500000001", 
                     new DateTime(2002, 0, 22), "12345678");
+            },
+            message);
+        }
+
+        [Test(Description = "Negative contact contructor test with uncorrect email")]
+        public void Constructor_CreationWithUncorrectEmail_ThrowsArgumentException()
+        {
+            // Arrange
+            var wrongEmail = "This is a very very very very very very very very " +
+                "very very very very very very very very very long email";
+            var message = "An exception should be thrown if the email of " +
+                "constructor is uncorrect";
+
+            // Assert
+            Assert.Throws<AssertionException>(() =>
+            {
+                // Act
+                new Contact("Иванов Иван", wrongEmail, "+79500000001",
+                    new DateTime(2002, 0, 22), "12345678");
+            },
+            message);
+        }
+
+        [Test(Description = "Negative contact contructor test with uncorrect phone number")]
+        public void Constructor_CreationWithUncorrectPhoneNumber_ThrowsArgumentException()
+        {
+            // Arrange
+            var wrongPhoneNumber = "8 fgf 721 00 90";
+            var message = "An exception should be thrown if the phone number of " +
+                "constructor is uncorrect";
+
+            // Assert
+            Assert.Throws<AssertionException>(() =>
+            {
+                // Act
+                new Contact("Иванов Иван", "1@no.mail", wrongPhoneNumber,
+                    new DateTime(2002, 0, 22), "12345678");
+            },
+            message);
+        }
+
+        [Test(Description = "Negative contact contructor test with uncorrect date time")]
+        public void Constructor_CreationWithUncorrectDateTime_ThrowsArgumentException()
+        {
+            // Arrange
+            var wrongDateTime = DateTime.Now.AddDays(1);
+            var message = "An exception should be thrown if the date time of " +
+                "constructor is uncorrect";
+
+            // Assert
+            Assert.Throws<AssertionException>(() =>
+            {
+                // Act
+                new Contact("Иванов Иван", "1@no.mail", "+79500000001",
+                    wrongDateTime, "12345678");
+            },
+            message);
+        }
+
+        [Test(Description = "Negative contact contructor test with uncorrect vk id")]
+        public void Constructor_CreationWithUncorrectVkId_ThrowsArgumentException()
+        {
+            // Arrange
+            var wrongIdVk = "This is a very very very very very " +
+                "very very long vk id";
+            var message = "An exception should be thrown if the date time of " +
+                "constructor is uncorrect";
+
+            // Assert
+            Assert.Throws<AssertionException>(() =>
+            {
+                // Act
+                new Contact("Иванов Иван", "1@no.mail", "+79500000001",
+                    new DateTime(2002, 0, 22), wrongIdVk);
             },
             message);
         }
@@ -243,7 +322,7 @@ namespace ContactsApp.UnitTests
             var actualEmail = contact.Email;
             var actualPhoneNumber = contact.PhoneNumber;
             var actualDateOfBirth = contact.DateOfBirth;
-            var actualIdVk = contact.IDVK;
+            var actualIdVk = contact.IdVk;
 
             // Assert
             Assert.Multiple(() =>
@@ -280,7 +359,7 @@ namespace ContactsApp.UnitTests
                 Assert.AreEqual(expectedContact.Email, actualContact.Email);
                 Assert.AreEqual(expectedContact.PhoneNumber, actualContact.PhoneNumber);
                 Assert.AreEqual(expectedContact.DateOfBirth, actualContact.DateOfBirth);
-                Assert.AreEqual(expectedContact.IDVK, actualContact.IDVK);
+                Assert.AreEqual(expectedContact.IdVk, actualContact.IdVk);
             }
             );
         }

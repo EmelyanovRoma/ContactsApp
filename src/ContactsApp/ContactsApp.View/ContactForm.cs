@@ -26,7 +26,7 @@ namespace ContactsApp.View
             {nameof(Model.Contact.Email), "" },
             {nameof(Model.Contact.PhoneNumber), "" },
             {nameof(Model.Contact.DateOfBirth), "" },
-            {nameof(Model.Contact.IDVK), "" }
+            {nameof(Model.Contact.IdVk), "" }
         };
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace ContactsApp.View
             EmailTextBox.Text = _contact.Email;
             PhoneNumberTextBox.Text = _contact.PhoneNumber;
             DateOfBirthDateTimePicker.Value = _contact.DateOfBirth;
-            VKTextBox.Text = _contact.IDVK;
+            VKTextBox.Text = _contact.IdVk;
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace ContactsApp.View
             _contact.Email = EmailTextBox.Text;
             _contact.PhoneNumber = PhoneNumberTextBox.Text;
             _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
-            _contact.IDVK = VKTextBox.Text;
+            _contact.IdVk = VKTextBox.Text;
         }
 
         /// <summary>
@@ -201,14 +201,14 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.IDVK = VKTextBox.Text;
+                _contact.IdVk = VKTextBox.Text;
                 VKTextBox.BackColor = DefaultBackColor;
-                _errorsDictionary[nameof(Model.Contact.IDVK)] = "";
+                _errorsDictionary[nameof(Model.Contact.IdVk)] = "";
             }
             catch (Exception exception)
             {
                 VKTextBox.BackColor = ErrorBackColor;
-                _errorsDictionary[nameof(Model.Contact.IDVK)] = exception.Message;
+                _errorsDictionary[nameof(Model.Contact.IdVk)] = exception.Message;
             }
         }
 

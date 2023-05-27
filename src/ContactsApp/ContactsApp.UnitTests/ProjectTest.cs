@@ -168,8 +168,8 @@ namespace ContactsApp.UnitTests
                         expectedContactsList[i].DateOfBirth, 
                         actualContactsList[i].DateOfBirth);
                     Assert.AreEqual(
-                        expectedContactsList[i].IDVK, 
-                        actualContactsList[i].IDVK);
+                        expectedContactsList[i].IdVk, 
+                        actualContactsList[i].IdVk);
                 }
             );
             }

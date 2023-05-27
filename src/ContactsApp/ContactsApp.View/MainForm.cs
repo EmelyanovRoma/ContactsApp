@@ -158,7 +158,7 @@ namespace ContactsApp.View
             EmailTextBox.Text = selectedContact.Email;
             PhoneNumberTextBox.Text = selectedContact.PhoneNumber;
             DateOfBirthTextBox.Text = selectedContact.DateOfBirth.ToString();
-            VKTextBox.Text = selectedContact.IDVK;
+            VKTextBox.Text = selectedContact.IdVk;
         }
 
         /// <summary>

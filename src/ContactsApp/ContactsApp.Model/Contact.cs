@@ -55,7 +55,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Идентификационный номер VK контакта.
         /// </summary>
-        private string _idVK;
+        private string _idVk;
 
         /// <summary>
         /// Возвращает или задает полное имя контакта.
@@ -141,11 +141,11 @@ namespace ContactsApp.Model
         /// <summary>
         /// Возвращает или задает идентификационный номер VK контакта.
         /// </summary>
-        public string IDVK
+        public string IdVk
         {
             get
             {
-                return _idVK;
+                return _idVk;
             }
             set
             {
@@ -154,7 +154,7 @@ namespace ContactsApp.Model
                     throw new ArgumentException(
                         $"ID VK length must not exceed 50 characters.");
                 }
-                _idVK = value;
+                _idVk = value;
             }
         }
 
@@ -165,14 +165,14 @@ namespace ContactsApp.Model
         /// <param name="email">Электронная поча контакта.</param>
         /// <param name="phoneNumber">Телефонный номер контакта.</param>
         /// <param name="dateOfBirth">Дата рождения контакта.</param>
-        /// <param name="idVK">Идентификационный номер VK контакта.</param>
-        public Contact(string fullName, string email, string phoneNumber, DateTime dateOfBirth, string idVK)
+        /// <param name="idVk">Идентификационный номер VK контакта.</param>
+        public Contact(string fullName, string email, string phoneNumber, DateTime dateOfBirth, string idVk)
         {
             FullName = fullName;
             Email = email;
             PhoneNumber = phoneNumber;
             DateOfBirth = dateOfBirth;
-            IDVK = idVK;
+            IdVk = idVk;
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace ContactsApp.Model
         /// <returns>Возвращает новый экземпляр <see cref="Contact"/>.</returns>
         public object Clone()
         {
-            return new Contact(FullName, Email, PhoneNumber, DateOfBirth, IDVK);
+            return new Contact(FullName, Email, PhoneNumber, DateOfBirth, IdVk);
         }
     }
 }

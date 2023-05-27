@@ -37,7 +37,7 @@ namespace ContactsApp.View
                 "+79500000004",
                 "+79500000005",
             };
-            string[] idVK =
+            string[] idVk =
             {
                 "123456789",
                 "987654321",
@@ -55,7 +55,7 @@ namespace ContactsApp.View
             }
 
             return new Contact(fullNames[index[0]], emails[index[1]], 
-                phoneNumbers[index[2]], DateTime.Today, idVK[index[3]]);
+                phoneNumbers[index[2]], DateTime.Today, idVk[index[3]]);
         }
     }
 }
