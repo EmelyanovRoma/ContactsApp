@@ -176,7 +176,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// 
+        /// Создает экземпляр <see cref="Contact"/>.
         /// </summary>
         public Contact() { }
 

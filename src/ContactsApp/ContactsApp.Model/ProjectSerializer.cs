@@ -5,7 +5,7 @@ namespace ContactsApp.Model
     /// <summary>
     /// Описывает сериализацию проекта.
     /// </summary>
-    public class ProjectSerializer
+    public static class ProjectSerializer
     {
         /// <summary>
         /// Путь до системной папки AppData.
@@ -28,7 +28,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Возвращает путь до папки, содержащей файл со списком контактов.
         /// </summary>
-        public string ContactAppFolderPath
+        public static string ContactAppFolderPath
         {
             get { return _contactAppFolderPath; }
             set { _contactAppFolderPath = value; }
@@ -37,7 +37,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Возвращает путь до файла со списком контактов.
         /// </summary>
-        public string SaveFilePath 
+        public static string SaveFilePath 
         { 
             get{ return _saveFilePath; }
             set{ _saveFilePath = value; }
@@ -47,7 +47,7 @@ namespace ContactsApp.Model
         /// Метод сохранения списка контактов в файл.
         /// </summary>
         /// <param name="project">Проект со списком контактов.</param>
-        public void SaveToFile(Project project)
+        public static void SaveToFile(Project project)
         {
             JsonSerializer serializer = new();
 
@@ -72,7 +72,7 @@ namespace ContactsApp.Model
         /// Метод загрузки списка контактов из файла.
         /// </summary>
         /// <returns></returns>
-        public Project LoadFromFile()
+        public static Project LoadFromFile()
         {
             Project project; 
             

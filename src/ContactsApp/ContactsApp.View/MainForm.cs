@@ -8,11 +8,6 @@ namespace ContactsApp.View
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Объект класса <see cref="ProjectSerializer"/>.
-        /// </summary>
-        private ProjectSerializer _projectSerializer = new ProjectSerializer();
-
-        /// <summary>
         /// Объект класса <see cref="Project"/>.
         /// </summary>
         private Project _project;
@@ -28,7 +23,7 @@ namespace ContactsApp.View
         public MainForm()
         {
             InitializeComponent();
-            _project = _projectSerializer.LoadFromFile();
+            _project = ProjectSerializer.LoadFromFile();
             _currentContacts = _project.Contacts;
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
@@ -189,7 +184,7 @@ namespace ContactsApp.View
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
             ClearSelectedContact();
-            _projectSerializer.SaveToFile(_project);
+            ProjectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -205,7 +200,7 @@ namespace ContactsApp.View
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
             ClearSelectedContact();
-            _projectSerializer.SaveToFile(_project);
+            ProjectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -221,7 +216,7 @@ namespace ContactsApp.View
             UpdateListBox();
             UpdateBirthdaySurnamesLabel();
             ClearSelectedContact();
-            _projectSerializer.SaveToFile(_project);
+            ProjectSerializer.SaveToFile(_project);
         }
 
         /// <summary>
@@ -265,7 +260,7 @@ namespace ContactsApp.View
             }
             else
             {
-                _projectSerializer.SaveToFile(_project);
+                ProjectSerializer.SaveToFile(_project);
             }
         }
 
