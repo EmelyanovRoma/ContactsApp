@@ -61,6 +61,7 @@ namespace ContactsApp.View
             InitializeComponent();
             _contact = ContactFactory.GenerateRandom();
             UpdateForm();
+            DateOfBirthDateTimePicker.MaxDate = DateTime.Now;
         }
 
         /// <summary>
@@ -182,12 +183,10 @@ namespace ContactsApp.View
             try
             {
                 _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
-                DateOfBirthDateTimePicker.BackColor = DefaultBackColor;
                 _errorsDictionary[nameof(Model.Contact.DateOfBirth)] = "";
             }
             catch (Exception exception)
             {
-                DateOfBirthDateTimePicker.BackColor = ErrorBackColor;
                 _errorsDictionary[nameof(Model.Contact.DateOfBirth)] = exception.Message;
             }
         }

@@ -60,7 +60,7 @@ namespace ContactsApp.Model
             {              
                 File.Create(SaveFilePath).Close();
             }
-
+            
             using (StreamWriter sw = new StreamWriter(SaveFilePath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {

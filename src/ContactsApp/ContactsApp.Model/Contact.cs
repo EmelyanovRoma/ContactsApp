@@ -11,7 +11,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Паттерн для проверки имени.
         /// </summary>
-        private const string _fullNameRegex = @"^[A-Яа-я]+\s?[A-Яа-я]*$";
+        private const string FullNameRegex = @"^[A-Яа-я]+\s?[A-Яа-я]*$";
 
         /// <summary>
         /// Паттерн для проверки номера телефона.
@@ -22,7 +22,7 @@ namespace ContactsApp.Model
         /// 380(67)777-7-777,
         /// +13435465566.
         /// </summary>
-        private const string _phoneNumberRegex = @"^([+]?[0-9\s-\(\)]{3,25})*$";
+        private const string PhoneNumberRegex = @"^([+]?[0-9\s-\(\)]{3,25})*$";
 
         /// <summary>
         /// Паттерн для проверки электронного адреса.
@@ -30,7 +30,7 @@ namespace ContactsApp.Model
         /// example_ex@no.mail,
         /// example-ex@no.mail.
         /// </summary>
-        private const string _emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        private const string EmailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
 
         /// <summary>
         /// Полное имя контакта.
@@ -68,7 +68,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100 || !Regex.IsMatch(value, _fullNameRegex))
+                if (value.Length > 100 || !Regex.IsMatch(value, FullNameRegex))
                 {
                     throw new ArgumentException(
                         $"Full name length must not exceed 100 characters.");
@@ -88,7 +88,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100 || !Regex.IsMatch(value, _emailRegex))
+                if (value.Length > 100 || !Regex.IsMatch(value, EmailRegex))
                 {
                     throw new ArgumentException(
                         $"Invalid email address. Email example: " +
@@ -109,7 +109,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (!Regex.IsMatch(value, _phoneNumberRegex))
+                if (!Regex.IsMatch(value, PhoneNumberRegex))
                 {
                     throw new ArgumentException(
                        $"The phone number must contain the following" +

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             InformationAboutContactPanel = new Panel();
-            DateOfBirthDateTimePicker = new ContactDateTimePicker();
+            DateOfBirthDateTimePicker = new DateTimePicker();
             AddPhotoButton = new PictureBox();
             VKTextBox = new TextBox();
             VKLabel = new Label();
@@ -72,15 +72,14 @@
             // 
             // DateOfBirthDateTimePicker
             // 
-            DateOfBirthDateTimePicker.BorderColor = Color.FromArgb(122, 122, 122);
-            DateOfBirthDateTimePicker.BorderSize = 1;
             DateOfBirthDateTimePicker.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             DateOfBirthDateTimePicker.Location = new Point(118, 197);
+            DateOfBirthDateTimePicker.MaxDate = new DateTime(9998, 6, 10, 0, 0, 0, 0);
+            DateOfBirthDateTimePicker.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             DateOfBirthDateTimePicker.MinimumSize = new Size(0, 23);
             DateOfBirthDateTimePicker.Name = "DateOfBirthDateTimePicker";
             DateOfBirthDateTimePicker.Size = new Size(181, 23);
             DateOfBirthDateTimePicker.TabIndex = 22;
-            DateOfBirthDateTimePicker.TextColor = Color.Black;
             DateOfBirthDateTimePicker.Value = new DateTime(2023, 5, 13, 0, 0, 0, 0);
             DateOfBirthDateTimePicker.ValueChanged += DateOfBirthDateTimePicker_ValueChanged;
             // 
@@ -261,6 +260,6 @@
         private Label EmailLabel;
         private TextBox FullNameTextBox;
         private Label FullNameLabel;
-        private ContactDateTimePicker DateOfBirthDateTimePicker;
+        private DateTimePicker DateOfBirthDateTimePicker;
     }
 }
