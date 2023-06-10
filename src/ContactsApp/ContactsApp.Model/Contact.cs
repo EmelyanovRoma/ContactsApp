@@ -68,7 +68,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100 || !Regex.IsMatch(value, FullNameRegex))
+                if (value.Length > 100 || !Regex.IsMatch(value, FullNameRegex) || value == "")
                 {
                     throw new ArgumentException(
                         $"Full name length must not exceed 100 characters.");
@@ -88,7 +88,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 100 || !Regex.IsMatch(value, EmailRegex))
+                if (value.Length > 100 || !Regex.IsMatch(value, EmailRegex) || value == "")
                 {
                     throw new ArgumentException(
                         $"Invalid email address. Email example: " +
@@ -109,7 +109,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (!Regex.IsMatch(value, PhoneNumberRegex))
+                if (!Regex.IsMatch(value, PhoneNumberRegex) || value == "")
                 {
                     throw new ArgumentException(
                        $"The phone number must contain the following" +
@@ -149,7 +149,7 @@ namespace ContactsApp.Model
             }
             set
             {
-                if (value.Length > 50)
+                if (value.Length > 50 || value == "")
                 {
                     throw new ArgumentException(
                         $"ID VK length must not exceed 50 characters.");

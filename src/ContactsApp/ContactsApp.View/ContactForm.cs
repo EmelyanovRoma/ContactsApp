@@ -46,7 +46,7 @@ namespace ContactsApp.View
             set
             {
                 _contact = value;
-                if (_contact != null)
+                if (_contact.FullName != null)
                 {
                     UpdateForm();
                 }
@@ -59,8 +59,6 @@ namespace ContactsApp.View
         public ContactForm()
         {
             InitializeComponent();
-            _contact = ContactFactory.GenerateRandom();
-            UpdateForm();
             DateOfBirthDateTimePicker.MaxDate = DateTime.Now;
         }
 
@@ -69,11 +67,11 @@ namespace ContactsApp.View
         /// </summary>
         private void UpdateForm()
         {
-            FullNameTextBox.Text = _contact.FullName;
-            EmailTextBox.Text = _contact.Email;
-            PhoneNumberTextBox.Text = _contact.PhoneNumber;
-            DateOfBirthDateTimePicker.Value = _contact.DateOfBirth;
-            VKTextBox.Text = _contact.IdVk;
+            FullNameTextBox.Text = Contact.FullName;
+            EmailTextBox.Text = Contact.Email;
+            PhoneNumberTextBox.Text = Contact.PhoneNumber;
+            DateOfBirthDateTimePicker.Value = Contact.DateOfBirth;
+            VKTextBox.Text = Contact.IdVk;
         }
 
         /// <summary>
@@ -82,11 +80,11 @@ namespace ContactsApp.View
         /// </summary>
         private void UpdateContact()
         {
-            _contact.FullName = FullNameTextBox.Text;
-            _contact.Email = EmailTextBox.Text;
-            _contact.PhoneNumber = PhoneNumberTextBox.Text;
-            _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
-            _contact.IdVk = VKTextBox.Text;
+            Contact.FullName = FullNameTextBox.Text;
+            Contact.Email = EmailTextBox.Text;
+            Contact.PhoneNumber = PhoneNumberTextBox.Text;
+            Contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
+            Contact.IdVk = VKTextBox.Text;
         }
 
         /// <summary>
@@ -122,11 +120,11 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.FullName = FullNameTextBox.Text;
+                Contact.FullName = FullNameTextBox.Text;
                 FullNameTextBox.BackColor = DefaultBackColor;
                 _errorsDictionary[nameof(Model.Contact.FullName)] = "";
             }
-            catch (Exception exception)
+            catch (ArgumentException exception)
             {
                 FullNameTextBox.BackColor = ErrorBackColor;
                 _errorsDictionary[nameof(Model.Contact.FullName)] = exception.Message;
@@ -142,11 +140,11 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.Email = EmailTextBox.Text;
+                Contact.Email = EmailTextBox.Text;
                 EmailTextBox.BackColor = DefaultBackColor;
                 _errorsDictionary[nameof(Model.Contact.Email)] = "";
             }
-            catch (Exception exception)
+            catch (ArgumentException exception)
             {
                 EmailTextBox.BackColor = ErrorBackColor;
                 _errorsDictionary[nameof(Model.Contact.Email)] = exception.Message;
@@ -162,11 +160,11 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.PhoneNumber = PhoneNumberTextBox.Text;
+                Contact.PhoneNumber = PhoneNumberTextBox.Text;
                 PhoneNumberTextBox.BackColor = DefaultBackColor;
                 _errorsDictionary[nameof(Model.Contact.PhoneNumber)] = "";
             }
-            catch (Exception exception)
+            catch (ArgumentException exception)
             {
                 PhoneNumberTextBox.BackColor = ErrorBackColor;
                 _errorsDictionary[nameof(Model.Contact.PhoneNumber)] = exception.Message;
@@ -182,10 +180,10 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
+                Contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
                 _errorsDictionary[nameof(Model.Contact.DateOfBirth)] = "";
             }
-            catch (Exception exception)
+            catch (ArgumentException exception)
             {
                 _errorsDictionary[nameof(Model.Contact.DateOfBirth)] = exception.Message;
             }
@@ -200,11 +198,11 @@ namespace ContactsApp.View
         {
             try
             {
-                _contact.IdVk = VKTextBox.Text;
+                Contact.IdVk = VKTextBox.Text;
                 VKTextBox.BackColor = DefaultBackColor;
                 _errorsDictionary[nameof(Model.Contact.IdVk)] = "";
             }
-            catch (Exception exception)
+            catch (ArgumentException exception)
             {
                 VKTextBox.BackColor = ErrorBackColor;
                 _errorsDictionary[nameof(Model.Contact.IdVk)] = exception.Message;

@@ -86,6 +86,7 @@ namespace ContactsApp.View
         private void AddContact()
         {
             var contactForm = new ContactForm();
+            contactForm.Contact = new();
 
             if (contactForm.ShowDialog() == DialogResult.OK)
             {
